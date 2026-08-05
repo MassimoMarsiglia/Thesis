@@ -1,0 +1,12 @@
+{
+    "duckdb.databases": [
+        {
+            "alias": "data-duckdb",
+            "type": "file",
+            "path": "/home/massimo/projects/linker/data/data-duckdb.duckdb",
+            "attached": true,
+            "readOnly": false
+        }
+    ],
+    "duckdb.defaultDatabase": "data-duckdb"
+}

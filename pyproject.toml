@@ -1,0 +1,32 @@
+[project]
+name = "linker"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "accelerate>=1.14.0",
+    "aiofiles>=25.1.0",
+    "bitsandbytes>=0.50.0",
+    "datasets==4.3.0",
+    "duckdb>=1.5.5",
+    "faiss-gpu>=1.15.0",
+    "hf-transfer>=0.1.9",
+    "huggingface-hub>=0.34.0",
+    "openai>=2.52.0",
+    "pandas>=3.0.5",
+    "peft>=0.20.0",
+    "protobuf>=7.35.1",
+    "python-dotenv>=1.2.2",
+    "rank-bm25>=0.2.2",
+    "sentence-transformers>=5.6.1",
+    "sentencepiece>=0.2.2",
+    "tensorboard>=2.21.0",
+    "torch>=2.13.0",
+    "torchao>=0.16.0",
+    "tqdm>=4.70.0",
+    "transformers==4.56.2",
+    "trl==0.22.2",
+    "unsloth>=2025.11.1",
+    "unsloth-zoo>=2025.11.2",
+]
