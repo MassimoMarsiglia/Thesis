@@ -1,0 +1,28 @@
+
+\subsection{Continuous Representation Spaces}
+
+Continuous representation spaces represent information as points within a high-dimensional vector space:
+
+\begin{equation}
+    \mathcal{Z}_{C} \subseteq \mathbb{R}^{d}
+\end{equation}
+
+where each representation is encoded as a vector:
+
+\begin{equation}
+    z = f(x) = [z_1,z_2\ldots,z_d]^{T}
+\end{equation}
+
+Instead of assigning isolated states to individual concepts or patterns, information is encoded through numerical vectors, where relationships between representations can be expressed through geometric properties such as distance or similarity.
+
+The use of distributed continuous representations has become a central concept in machine learning, where information is represented through patterns of numerical values rather than isolated symbolic states~\cite{hinton1986learning}. Similar information can be represented by nearby points within the vector space, allowing the representation space itself to capture relationships between stored information.
+
+Within associative memory systems, continuous representation spaces enable memories to be represented as high-dimensional vectors rather than discrete states. A memory set can therefore be expressed as:
+
+\begin{equation}
+    M = \{m_1,m_2\ldots,m_k\}, \quad m_i \in \mathbb{R}^{d}
+\end{equation}
+
+where each $m_i$ represents an individual stored memory within the continuous representation space. This provides a more flexible representation of information and forms the basis for modern approaches to associative memory and machine learning systems~\cite{ramsauer2021hopfield}.
+
+In this work, continuous representation spaces serve as the foundation for storing and accessing memories.

@@ -1,0 +1,87 @@
+\section{Methodology: Design Science Research}
+
+This research follows the \textit{Design Science Research} (DSR) methodology,
+which provides a systematic approach for designing, developing, and evaluating
+artifacts intended to address practical problems while contributing to
+scientific knowledge. Unlike explanatory research approaches that primarily
+aim to understand existing phenomena, DSR focuses on the creation and
+evaluation of purposeful artifacts through an iterative design process.
+
+DSR is appropriate for this thesis because the objective is to develop and
+evaluate an AI-based regulatory entity linking framework. Regulatory documents
+contain numerous references to legal acts, directives, standards, and technical
+specifications, where the same regulatory entity may be expressed through
+different identifiers, abbreviations, titles, or descriptive references.
+Resolving these references to their corresponding canonical entities is a
+fundamental requirement for constructing regulatory knowledge graphs and
+enabling automated compliance workflows.
+
+The research follows the Design Science Research Methodology (DSRM) proposed
+by Peffers et al.~\cite{peffers2007design}, which consists of six iterative
+activities:
+
+\begin{enumerate}
+
+    \item \textbf{Problem Identification and Motivation.}
+    The research problem is identified through a review of regulatory
+    compliance, entity linking, information retrieval, and natural language
+    processing literature. This analysis reveals limitations in existing
+    approaches for resolving regulatory references due to the domain-specific
+    characteristics of legal documents, including heterogeneous reference
+    formats, semantic ambiguity, cross-references between legal acts, and
+    limited availability of labeled regulatory data.
+
+    \item \textbf{Definition of Objectives.}
+    Based on the identified problem, the objectives of the artifact are
+    established. The primary objective is to design a framework capable of
+    linking textual regulatory references to their corresponding canonical
+    regulatory entities with high reliability. The framework should support
+    semi-structured regulatory data, incorporate strategies for addressing
+    limited annotations, and enable robust entity resolution across varying
+    reference forms.
+
+    \item \textbf{Design and Development.}
+    The artifact developed in this research is an end-to-end regulatory entity
+    linking framework covering the stages from regulatory data preparation to
+    model inference. The framework incorporates data preprocessing, data
+    augmentation, semantic representation learning, candidate generation, entity
+    resolution, and the creation of an inference pipeline for applying the
+    developed models to unseen regulatory references. Transformer-based models
+    are utilized to create contextual representations of regulatory references
+    and candidate entities, while multi-stage retrieval approaches are
+    investigated to balance retrieval efficiency and linking accuracy.
+    Additionally, the relationship between Transformer architectures and
+    associative memory models, particularly Modern Hopfield Networks, is examined
+    as a theoretical perspective on the associative retrieval behaviour of these
+    models.
+
+    \item \textbf{Demonstration.}
+    The developed framework is demonstrated on regulatory datasets containing
+    references to legal entities. Demonstration scenarios focus on resolving
+    different surface forms of regulatory references, including official
+    identifiers, abbreviated names, and descriptive mentions, to their
+    corresponding canonical regulatory entities.
+
+    \item \textbf{Evaluation.}
+    The developed artifact is evaluated using entity linking metrics and
+    retrieval-based evaluation methods. The evaluation examines the framework's
+    ability to correctly identify regulatory entities, resolve ambiguous
+    references, and generalize across different regulatory reference patterns.
+    The results are analyzed to determine the effectiveness of the proposed
+    framework in supporting reliable automated compliance workflows.
+
+    \item \textbf{Communication.}
+    The artifact design, implementation process, evaluation results, and
+    research findings are documented throughout this thesis. The conclusions
+    summarize the contributions of the developed regulatory entity linking
+    framework, discuss limitations, and identify opportunities for future
+    research in AI-supported regulatory knowledge management.
+
+\end{enumerate}
+
+The iterative nature of DSR allows insights obtained during implementation and
+evaluation to guide refinements of the developed artifact. By combining the
+design of a practical regulatory entity linking framework with systematic
+evaluation, this research contributes both an artifact for resolving regulatory
+references and knowledge regarding the application of AI-based entity linking
+methods in compliance-oriented domains.

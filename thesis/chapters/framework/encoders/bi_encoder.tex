@@ -1,0 +1,49 @@
+\section{Bi-Encoder Models}
+
+Bi-encoder architectures are neural representation models designed to encode two inputs independently into continuous vector representations. In the context of information retrieval and compliance-oriented document search, bi-encoders provide an efficient mechanism for mapping queries and documents into a shared semantic embedding space. Rather than relying on manually defined matching rules or lexical overlap, bi-encoders learn a retrieval function that determines the relevance between queries and documents through learned representations. This enables large-scale retrieval by comparing vector representations instead of performing expensive pairwise interactions between every query and document \cite{karpukhin2020dense}.
+
+The emergence of transformer-based language models has significantly improved the quality of learned retrieval functions by enabling dense representations that capture contextual meaning. Unlike traditional sparse retrieval approaches, which rely primarily on exact term matching, transformer-based encoders exploit self-attention mechanisms to model relationships between words and concepts within their context \cite{vaswani2017attention}. As a result, semantically related concepts can be represented closely within the embedding space, even when their lexical forms differ \cite{reimers2019sentence}.
+
+\subsection{Architecture of a Bi-Encoder}
+
+A bi-encoder learns separate encoding functions that transform a query $q$ and a document $d$ independently into dense representations:
+
+\begin{equation}
+h_q = E_q(q)
+\end{equation}
+
+\begin{equation}
+h_d = E_d(d)
+\end{equation}
+
+where $E_q$ and $E_d$ denote the query and document encoders, respectively, and $h_q$ and $h_d$ represent their resulting embeddings.
+
+The learned retrieval function estimates the relevance between a query and document by measuring the similarity between their corresponding representations. A common similarity measure is cosine similarity:
+
+\begin{equation}
+sim(q,d)=
+\frac{h_q \cdot h_d}
+{||h_q|| ||h_d||}
+\end{equation}
+
+Through training, the model learns an embedding space where relevant documents are positioned closer to their associated queries, while irrelevant documents are separated. Therefore, retrieval can be interpreted as a learned nearest-neighbor search problem over stored representations rather than a manually specified matching process.
+
+The independent encoding process allows document embeddings to be computed in advance and stored in an index. During retrieval, only the query representation must be generated, after which efficient nearest-neighbor search can identify relevant documents \cite{karpukhin2020dense}. This property makes bi-encoders particularly suitable for large-scale retrieval scenarios where exhaustive comparison between queries and documents is computationally impractical.
+
+\subsection{Bi-Encoders in Two-Stage Retrieval Systems}
+
+A major advantage of bi-encoder architectures is their computational efficiency. However, the independent encoding process limits their ability to model detailed interactions between a query and document. Since the query and document representations are created separately, fine-grained relationships between specific terms, entities, or contextual dependencies may not be fully captured \cite{nogueira2019passage}.
+
+To address this limitation, modern retrieval systems commonly employ a two-stage architecture. The first stage uses a bi-encoder as a candidate generation mechanism, retrieving a manageable subset of potentially relevant documents from a large corpus. These candidates are subsequently evaluated by a more computationally expensive interaction model, such as a cross-encoder, which performs deeper query-document reasoning \cite{nogueira2019passage}.
+
+This design creates a balance between scalability and accuracy. In compliance applications, this property is particularly relevant because regulatory systems may need to search across large collections of regulations, policies, contracts, and internal documentation while maintaining sufficient retrieval quality.
+
+\subsection{Relationship to Attention-Based Memory Models}
+
+The learned embedding space produced by bi-encoders can be interpreted as a structured semantic memory, where documents are organized according to their learned relationships with possible queries. Each document representation acts as a stored pattern within this space, and retrieval occurs by identifying representations that are most relevant to an input query.
+
+This perspective creates a connection between dense retrieval models and attention-based memory architectures, such as modern Hopfield networks. Instead of presenting an entire document collection to computationally expensive downstream models, bi-encoders can function as an initial retrieval mechanism that selects a smaller set of relevant candidates. This reduces the number of samples requiring further evaluation and allows more complex attention-based models to focus their computation on the most informative representations.
+
+Modern Hopfield networks extend classical associative memory by using attention-based retrieval mechanisms to identify relevant stored patterns \cite{ramsauer2021hopfield}. Similar to transformer attention, these networks retrieve information by measuring relationships between a query representation and stored memory patterns. The learned retrieval function of a bi-encoder provides a compatible representation space in which associative memory mechanisms can efficiently operate.
+
+For compliance-oriented applications, this approach is especially valuable due to the large volume and complexity of regulatory information. By using bi-encoders for candidate generation, only the most semantically relevant documents need to be evaluated by subsequent models, reducing computational requirements while maintaining retrieval quality. This enables attention-based models and human reviewers to operate on a focused set of high-value candidates rather than processing the entire knowledge base.

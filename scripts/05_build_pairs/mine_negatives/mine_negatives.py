@@ -3,9 +3,9 @@ from datasets import load_dataset
 from sentence_transformers import SentenceTransformer
 from sentence_transformers.util import mine_hard_negatives
 
-INPUT_DIR = "data/combined/combined_training_pairs.jsonl"
-OUTPUT_DIR = "data/combined/mined_training_pairs_v2.jsonl"
-MODEL_NAME = "artifacts/models/embeddinggemma-document-linker/checkpoint-44"
+INPUT_DIR = "data/combined_training_pairs.jsonl"
+OUTPUT_DIR = "data/train/mined_training_pairs_v2.jsonl"
+MODEL_NAME = "artifacts/models/embeddinggemma-document-linker/checkpoint-170"
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 

@@ -1,0 +1,51 @@
+\section{Evaluation Setup and Metrics}
+
+The evaluation framework assesses the performance of the implemented regulatory entity linking pipeline. Evaluation is performed using the held-out test partition created during dataset construction, which contains regulatory entities not observed during training.
+
+The evaluation is divided according to the individual components of the retrieval pipeline. The bi-encoder is evaluated based on its ability to retrieve relevant regulatory entities, while the cross-encoder is evaluated based on its ability to rerank retrieved candidates. Additionally, the complete pipeline is evaluated to measure the final entity linking performance.
+
+The following sections describe the metrics used to evaluate each component.
+
+\subsection{Bi-Encoder Evaluation}
+
+The bi-encoder is evaluated as a candidate retrieval model, where its objective is to retrieve a set of relevant regulatory entities for a given regulatory reference. Since the bi-encoder is used as the first retrieval stage of the pipeline, the evaluation focuses on whether the correct regulatory entity is included within the retrieved candidate set rather than only whether it is ranked first.
+
+The primary metric used for evaluating the bi-encoder is Recall@K. Recall@K measures the proportion of references where the correct regulatory entity is retrieved within the top-$K$ candidates. This metric is suitable for the bi-encoder because the retrieved candidates are subsequently passed to the cross-encoder for reranking. Therefore, a successful bi-encoder should maximize the probability that the correct entity is available for the downstream reranking stage.
+
+\[
+Recall@K = \frac{1}{N}\sum_{i=1}^{N}\mathbb{1}(r_i \in C_i^K)
+\]
+
+where $N$ represents the number of evaluated references, $r_i$ represents the correct regulatory entity for reference $i$, and $C_i^K$ represents the set of top-$K$ retrieved candidates.
+
+In addition to Recall@K, Mean Reciprocal Rank (MRR) is used to evaluate the ranking quality of retrieved candidates. While Recall@K only considers whether the correct entity is present within the candidate set, MRR considers its position within the ranking. This provides additional insight into whether the bi-encoder assigns higher similarity scores to correct entities.
+
+\[
+MRR = \frac{1}{N}\sum_{i=1}^{N}\frac{1}{rank_i}
+\]
+
+where $rank_i$ represents the position of the correct regulatory entity within the retrieved candidate ranking.
+
+\subsection{Cross-Encoder Evaluation}
+
+The cross-encoder is evaluated as a reranking model that receives a regulatory reference together with retrieved candidate entities and predicts their relevance. Unlike the bi-encoder, the objective of the cross-encoder is not candidate discovery but accurate ranking of a smaller candidate set.
+
+The primary metric used for cross-encoder evaluation is Mean Reciprocal Rank (MRR). MRR is suitable for evaluating reranking performance because the objective of the cross-encoder is to assign the highest relevance score to the correct regulatory entity. A higher MRR indicates that the correct entity consistently appears closer to the top of the ranked candidate list.
+
+Recall@K is additionally reported after reranking to measure whether the correct entity remains within the final ranked candidate set. Although candidate recall is primarily determined by the bi-encoder stage, evaluating Recall@K after reranking provides insight into whether the cross-encoder incorrectly demotes relevant candidates.
+
+For binary relevance evaluation, precision, recall, and F1-score are additionally used to evaluate the classification behaviour of the cross-encoder. These metrics measure how effectively the model distinguishes relevant reference-entity pairs from incorrect candidate pairs.
+
+\[
+Precision = \frac{TP}{TP+FP}
+\]
+
+\[
+Recall = \frac{TP}{TP+FN}
+\]
+
+\[
+F1 = 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall}
+\]
+
+where $TP$, $FP$, and $FN$ represent true positive, false positive, and false negative predictions respectively.

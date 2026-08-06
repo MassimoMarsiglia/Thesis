@@ -1,0 +1,56 @@
+\section{Bi-Encoder Training}
+
+Following the dataset creation, the bi-encoder component is fine-tuned on the constructed regulatory reference dataset to learn domain-specific semantic representations for regulatory reference retrieval. The model is fully fine-tuned, allowing the pretrained embedding parameters to be adapted directly to the regulatory entity linking task.
+
+The implementation uses the SentenceTransformers library, which provides training utilities for dense retrieval models and retrieval-oriented evaluation methods \cite{reimers2019sentence}. The model is optimized using Cached Multiple Negatives Ranking Loss (CachedMNRL). This loss function learns representations from positive reference-entity pairs by treating other examples within the batch as implicit negative examples. During training, the model maximizes the similarity between matching reference-entity pairs while minimizing similarity with non-matching pairs within the batch.
+
+The effectiveness of Multiple Negatives Ranking Loss is strongly influenced by the number of available in-batch negatives. Larger effective batch sizes provide more negative examples, increasing the difficulty of the retrieval task and encouraging the model to learn more discriminative embeddings. To support larger effective batch sizes under limited GPU memory, CachedMNRL stores representations from previous mini-batches, allowing additional negatives to be incorporated without requiring all examples to be processed simultaneously \cite{henderson2017efficient}.
+
+To ensure meaningful negative examples, a no-duplicate batch sampler is used. This prevents multiple examples belonging to the same regulatory entity from appearing within a single batch, ensuring that in-batch negatives represent distinct candidate entities.
+
+The model is trained using mixed-precision BF16 computation. The maximum sequence length is set to 512 tokens to accommodate longer regulatory references and contextual information while maintaining computational efficiency.
+
+Due to the memory requirements associated with full model fine-tuning, gradient checkpointing is enabled using \texttt{gradient\_checkpointing\_enable()}. Gradient checkpointing reduces memory consumption by avoiding storage of intermediate activations during the forward pass and instead recomputing selected activations during backpropagation. This approach reduces GPU memory requirements at the cost of additional computation time \cite{chen2016training}.
+
+The optimizer configuration uses AdamW with 8-bit optimizer states provided through the bitsandbytes library. The 8-bit implementation maintains comparable optimization behaviour to standard AdamW while reducing memory consumption by representing optimizer states using lower-precision 8-bit data types instead of traditional 32-bit floating-point representations. This reduction in optimizer-state memory enables larger effective batch sizes and more efficient fine-tuning on constrained GPU hardware \cite{dettmers2022optimizers}.
+
+Gradient accumulation is used to increase the effective batch size without exceeding GPU memory limitations. This is particularly relevant for Multiple Negatives Ranking Loss, where the number of negative examples available during optimization is directly related to the batch size. The effective batch size is determined by the product of the physical batch size and the number of gradient accumulation steps.
+
+The main training configuration is summarized in Table~\ref{tab:bi_encoder_training}.
+
+\begin{table}[ht]
+\centering
+\caption{Bi-encoder training configuration.}
+\label{tab:bi_encoder_training}
+\begin{tabular}{ll}
+\hline
+\textbf{Parameter} & \textbf{Configuration} \\
+\hline
+Training approach & Full fine-tuning \\
+Precision & BF16 mixed precision \\
+Maximum sequence length & 512 tokens \\
+Loss function & Cached Multiple Negatives Ranking Loss \\
+Batch sampling & No-duplicate batch sampler \\
+Optimizer & AdamW 8-bit (bitsandbytes) \\
+Learning rate & $2 \times 10^{-5}$ \\
+Weight decay & 0.01 \\
+Warmup ratio & 0.05 \\
+Gradient checkpointing & Enabled \\
+Gradient accumulation steps & 4 \\
+Evaluation framework & SentenceTransformers InformationRetrievalEvaluator \\
+Validation metric & Cosine MRR@10 \\
+\hline
+\end{tabular}
+\end{table}
+
+During training, model performance is monitored using the SentenceTransformers InformationRetrievalEvaluator on the validation dataset. The primary validation metric is:
+
+\[
+\texttt{eval\_validation-document-linking\_cosine\_mrr@10}
+\]
+
+which measures the mean reciprocal rank of the correct regulatory entity among the top-$k$ retrieved candidates using cosine similarity.
+
+The validation metric is used only for monitoring training progress and model selection. Final performance evaluation is conducted separately using an independent test dataset outside of the training loop to provide an unbiased assessment of retrieval performance on unseen regulatory entities.
+
+\input{chapters/implementation/hard_negative_mining.tex}

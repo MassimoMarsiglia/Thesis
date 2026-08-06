@@ -1,0 +1,157 @@
+\section{System Architecture}
+
+The implemented system follows the two-stage retrieval architecture described in the proposed framework. The objective is to efficiently identify regulatory entities corresponding to extracted regulatory references while maintaining sufficient semantic accuracy for compliance-oriented applications.
+
+The implemented architecture consists of four primary components:
+
+\begin{enumerate}
+    \item Regulatory reference processing and representation
+    \item Dense candidate retrieval using a bi-encoder
+    \item Semantic candidate reranking using a cross-encoder
+    \item Confidence-based decision support
+\end{enumerate}
+
+The bi-encoder provides an efficient retrieval mechanism by mapping regulatory references and candidate entities into a shared embedding space. Retrieved candidates are subsequently evaluated by the cross-encoder, which performs deeper interaction-based relevance estimation.
+
+\subsection{Model Components}
+
+The retrieval component is implemented using a transformer-based bi-encoder architecture. The model receives regulatory references and candidate entities as independent inputs and generates dense vector representations used for similarity-based retrieval.
+
+The reranking component is implemented using a transformer-based cross-encoder architecture. Unlike the bi-encoder, the cross-encoder jointly processes the regulatory reference and candidate entity, allowing direct token-level interaction through self-attention.
+
+\subsection{Experimental Environment}
+
+The experiments were conducted using the implemented training and evaluation pipeline. The system was developed using the PyTorch deep learning framework together with transformer-based model implementations. The computational environment used throughout model development and evaluation is summarized in Table~\ref{tab:experimental_environment}.
+
+The computational environment was kept consistent across experiments to ensure comparable evaluation results.
+
+\begin{table}[ht]
+\centering
+\caption{Experimental environment used for model development and evaluation.}
+\label{tab:experimental_environment}
+\begin{tabular}{ll}
+\hline
+\textbf{Component} & \textbf{Specification} \\
+\hline
+GPU & NVIDIA RTX 4070 (12GB VRAM) \\
+CPU & AMD Ryzen 7 5800X \\
+Memory & 32GB DDR4 RAM \\
+Operating System & CachyOS Linux \\
+Frameworks & PyTorch, Hugging Face Transformers \\
+\hline
+\end{tabular}
+\end{table}
+
+The computational environment was kept consistent across experiments to ensure comparable evaluation results.
+
+\subsection{Model Selection and Configuration}
+
+The proposed framework consists of multiple transformer-based components, each serving a distinct role within the regulatory entity linking pipeline. Table~\ref{tab:model_configuration} summarizes the pretrained models used as initialization points and their respective purposes within the framework.
+
+\begin{table}[H]
+\centering
+\caption{Models used within the implemented regulatory entity linking framework.}
+\label{tab:model_configuration}
+\begin{tabular}{ll}
+\hline
+\textbf{Component} & \textbf{Base Model} \\
+\hline
+
+Embedding Model &
+google/embeddinggemma-300m \cite{embeddinggemma2025}
+\\[0.2cm]
+
+Cross-Encoder &
+BAAI/bge-reranker-v2-m3 \cite{chen2024bge}
+\\[0.2cm]
+
+Large Language Model &
+\makecell[l]{Gemma-4-12B-it \cite{gemma4technicalreport2026}\\
+Unsloth UD-Q4\_K\_XL GGUF Quantization \cite{unslothgemma4gguf2026}}
+\\
+
+\hline
+\end{tabular}
+\end{table}
+
+Figure~\ref{fig:model_architecture} provides an overview of the implemented system architecture and illustrates the interaction between the individual components of the regulatory entity linking pipeline.
+
+The bi-encoder serves as the initial candidate retrieval component and is fine-tuned on regulatory reference-entity pairs to learn domain-specific semantic representations. The reranking model is subsequently fine-tuned to perform fine-grained relevance estimation between retrieved candidates and regulatory references. Additionally, a large language model is utilized for domain adaptation through noise characterization and data augmentation.
+
+The system receives regulatory documents as input and extracts relevant regulatory references. These references are encoded into dense representations and compared against indexed regulatory entities to retrieve a set of candidate matches. The candidate set is subsequently evaluated by the cross-encoder, which produces relevance scores used for final entity linking decisions.
+
+\begin{figure}[ht]
+\centering
+
+\begin{tikzpicture}[
+    node distance=1.4cm,
+    every node/.style={font=\small},
+    block/.style={
+        rectangle,
+        rounded corners,
+        draw=black,
+        minimum width=5cm,
+        minimum height=0.9cm,
+        align=center,
+        fill=gray!10
+    },
+    decision/.style={
+        diamond,
+        draw=black,
+        aspect=2,
+        align=center,
+        fill=gray!10
+    },
+    arrow/.style={->, thick}
+]
+
+\node[block] (input)
+{Regulatory Documents};
+
+\node[block, below=of input] (extract)
+{Regulatory Reference Extraction};
+
+\node[block, below=of extract] (embedding)
+{Bi-Encoder Retrieval\\
+EmbeddingGemma-300M};
+
+\node[block, below=of embedding] (candidate)
+{Top-$k$ Candidate\\
+Regulatory Entities};
+
+\node[block, below=of candidate] (reranker)
+{Cross-Encoder Reranking\\
+BGE-reranker-v2-m3};
+
+\node[block, below=of reranker] (score)
+{Relevance Score\\
+Confidence Estimation};
+
+\node[decision, below=of score, yshift=-0.3cm] (threshold)
+{Confidence\\
+Threshold};
+
+\node[block, below left=1.5cm and 1cm of threshold] (auto)
+{Automatic\\
+Entity Linking};
+
+\node[block, below right=1.5cm and 1cm of threshold] (human)
+{Human Expert\\
+Review};
+
+\draw[arrow] (input)--(extract);
+\draw[arrow] (extract)--(embedding);
+\draw[arrow] (embedding)--(candidate);
+\draw[arrow] (candidate)--(reranker);
+\draw[arrow] (reranker)--(score);
+\draw[arrow] (score)--(threshold);
+
+\draw[arrow] (threshold)--node[above left]{High confidence}(auto);
+\draw[arrow] (threshold)--node[above right]{Low confidence}(human);
+
+\end{tikzpicture}
+
+\caption{Implemented regulatory entity linking architecture.}
+\label{fig:implemented_architecture}
+
+\end{figure}

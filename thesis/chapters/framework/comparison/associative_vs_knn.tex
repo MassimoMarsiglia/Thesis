@@ -1,0 +1,79 @@
+\section{Comparison of Instance-Based and Associative Retrieval}
+
+Retrieval mechanisms allow machine learning systems to access previously stored information without modifying the underlying model parameters. 
+In classification systems, retrieval is commonly performed by comparing an input representation against stored examples or feature representations. 
+Two relevant approaches are instance-based retrieval methods, such as k-nearest neighbors (KNN), and associative retrieval methods based on modern Hopfield networks.
+
+\subsection{Retrieval-Augmented Classification}
+
+Retrieval-Augmented Classification (RAC) extends conventional classification by introducing an external memory containing previously observed samples, representations, or class information. 
+Instead of relying solely on knowledge encoded within the classifier parameters, predictions can be informed by retrieved information from this external memory.
+
+A common approach is k-nearest neighbors (KNN), where inputs are first transformed into a continuous representation space. 
+Given a query representation $q$ and a memory containing stored representations:
+
+\begin{equation}
+    M = \{(x_i,y_i)\}_{i=1}^{N}
+\end{equation}
+
+the similarity between the query and stored representations is calculated. 
+In modern machine learning applications, cosine similarity is commonly used due to its effectiveness for comparing normalized embedding vectors:
+
+\begin{equation}
+    s(q,x_i)=\frac{q^Tx_i}{||q||_2||x_i||_2}
+\end{equation}
+
+The retrieved neighbours are then used to determine the predicted class:
+
+\begin{equation}
+    \hat{y}=
+    \arg\max_{c\in C}
+    \sum_{i\in N_k(q)}
+    \mathbb{1}(y_i=c)
+\end{equation}
+
+where $N_k(q)$ denotes the set of the $k$ most similar stored representations.
+
+Although KNN provides a simple and effective retrieval mechanism, the retrieval process is limited to selecting existing samples based on pairwise similarity. 
+The retrieved information is not transformed into a new memory representation, and the contribution of each memory depends only on its similarity to the query.
+
+\subsection{Associative Retrieval with Modern Hopfield Networks}
+
+Modern Hopfield networks provide an alternative retrieval mechanism by treating memory access as an associative operation over a continuous representation space. 
+Instead of selecting a fixed number of nearest neighbours, the query interacts with the complete memory set to produce a weighted combination of stored memories.
+
+Given a memory matrix:
+
+\begin{equation}
+    M=[m_1,m_2,...,m_N]^T
+\end{equation}
+
+and a query representation $q$, retrieval is performed using:
+
+\begin{equation}
+    \xi^{new}
+    =
+    M^T \operatorname{softmax}(\beta Mq)
+\end{equation}
+
+where $\beta$ controls the concentration of the retrieval distribution.
+
+The interaction term $Mq$ is based on the dot product between the query and stored memories. 
+Unlike cosine similarity, the dot product retains information about vector magnitude in addition to directional similarity:
+
+\begin{equation}
+    m_i^Tq = ||m_i||_2||q||_2\cos(\theta)
+\end{equation}
+
+Consequently, modern Hopfield retrieval considers not only how well a memory aligns with the query, but also the magnitude of the interacting representations. 
+This allows the retrieval process to incorporate contextual information contained within the representation space rather than relying solely on normalized similarity.
+
+Therefore, while KNN performs explicit nearest-neighbour retrieval based on similarity between individual representations, modern Hopfield networks perform associative retrieval by dynamically combining information from multiple memories. 
+The retrieved representation is not restricted to an existing stored sample but emerges from the interaction between the query and the complete memory space.
+
+\subsection{Summary}
+
+Both KNN-based retrieval and modern Hopfield networks use external memory representations to avoid storing all information within model parameters. 
+However, they differ fundamentally in how memories are accessed. 
+KNN performs direct similarity-based retrieval of existing examples, typically using cosine similarity between embedding vectors. 
+Modern Hopfield networks instead perform associative retrieval through continuous interactions between queries and stored memories, allowing retrieved information to emerge as a weighted combination of stored representations.

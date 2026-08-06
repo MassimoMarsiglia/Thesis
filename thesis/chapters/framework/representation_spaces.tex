@@ -1,0 +1,20 @@
+\section{Representation Spaces}
+
+A fundamental aspect of machine learning systems is how information is represented internally.
+Since real-world information such as text, images, and signals is not naturally expressed in a format suitable for mathematical operations, it must be transformed into a structured representation.
+
+A representation space defines how information is encoded and how relationships between individual elements are expressed. Depending on the chosen representation, information can be organized as discrete states or continuous vectors. These approaches differ in how information is stored and how relationships between individual representations can be modeled.
+
+In general, a representation function maps an input sample $x$ from an input space $\mathcal{X}$ into a representation space $\mathcal{Z}$:
+
+\begin{equation}
+    f: \mathcal{X} \rightarrow \mathcal{Z}
+\end{equation}
+
+where $\mathcal{Z}$ defines the space in which information is stored and compared.
+
+\input{chapters/framework/representation_spaces/representation_learning.tex}
+
+\input{chapters/framework/representation_spaces/discreet.tex}
+
+\input{chapters/framework/representation_spaces/continous.tex}

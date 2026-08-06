@@ -1,0 +1,33 @@
+\section{Design Decisions}
+
+The proposed regulatory entity linking framework is guided by a series of architectural design decisions intended to address the challenges of semantic retrieval within compliance-oriented environments. The following decisions establish the conceptual foundation of the proposed artifact and motivate the selection of its principal components.
+
+\subsection{Adoption of a Two-Stage Retrieval Architecture}
+
+Regulatory corpora may contain thousands of potential candidate entities, making exhaustive interaction between every regulatory reference and every candidate computationally infeasible. Consequently, the proposed framework adopts a two-stage retrieval architecture consisting of an initial retrieval stage followed by a semantic reranking stage.
+
+The first stage is responsible for efficiently retrieving a small set of semantically relevant candidates, while the second stage performs detailed interaction-based relevance estimation. This separation balances computational efficiency with retrieval accuracy and enables scalable deployment on large regulatory collections.
+
+\subsection{Dense Semantic Retrieval}
+
+Regulatory references frequently exhibit considerable lexical variation resulting from abbreviations, formatting differences, incomplete citations, and organization-specific terminology. Traditional lexical retrieval methods rely primarily on exact token overlap and therefore struggle when equivalent regulatory concepts are expressed differently.
+
+For this reason, the proposed framework adopts dense semantic representations learned by transformer-based language models. Mapping regulatory references and entities into a shared embedding space enables retrieval based on semantic similarity rather than lexical correspondence, improving robustness to variations commonly observed within regulatory documents.
+
+\subsection{Iterative Hard Negative Mining}
+
+Many incorrect regulatory entities are easily distinguishable from the correct entity and therefore provide limited training value. Instead, the proposed framework incorporates iterative hard negative mining to identify candidates that are semantically similar yet incorrect.
+
+Training on these difficult examples encourages the retrieval models to learn more discriminative representations and improves their ability to distinguish between highly related regulatory entities. Hard negative mining is therefore incorporated as an iterative refinement strategy throughout model development.
+
+\subsection{Noise-Aware Data Augmentation}
+
+The distribution of regulatory references encountered during deployment is unlikely to be fully represented by the initial training dataset. Rather than applying generic augmentation techniques, the proposed framework characterizes recurring sources of variation within unlabeled regulatory documents and represents them through an abstract taxonomy of domain-specific noise.
+
+This taxonomy describes common patterns of variation without directly incorporating individual regulatory references from the unlabeled corpus. Consequently, it enables realistic augmentation while reducing the risk of introducing document-specific information into the generated training data. The resulting synthetic examples are intended to improve robustness against the variability encountered in practical compliance environments.
+
+\subsection{Confidence-Based Decision Support}
+
+Regulatory compliance applications often require a high degree of reliability because incorrect entity linking may influence downstream compliance assessments. For this reason, the proposed framework incorporates confidence estimation as part of the final decision process.
+
+Rather than treating all predictions equally, the framework is designed to distinguish between high-confidence and uncertain predictions. High-confidence predictions may be accepted automatically, whereas uncertain predictions can be forwarded for human verification. This design supports practical deployment by combining automated retrieval with human oversight where additional assurance is required.

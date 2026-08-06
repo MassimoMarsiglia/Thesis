@@ -1,0 +1,9 @@
+\section{Representation Learning}
+
+While representation spaces define how information can be encoded and compared, the quality of a representation strongly depends on how well it captures relevant characteristics of the underlying data. Representation learning refers to the process of automatically learning such representations from data rather than relying on manually designed features.
+
+Given a dataset of input samples, a representation learning model learns a mapping function that transforms raw inputs into representations where relevant relationships are preserved and irrelevant variations are minimized. The objective is to learn a representation space in which samples with similar semantic meaning are located closer together, while dissimilar samples are separated.
+
+In the context of natural language processing, representation learning enables the transformation of textual information into dense vector representations, commonly referred to as embeddings. Modern Transformer-based models learn contextualized representations in which the meaning of a token or sequence depends on its surrounding context. These representations can subsequently be adapted through fine-tuning on domain-specific data to better capture task-specific relationships.
+
+For entity linking tasks, representation learning is particularly important because the model must learn semantic relationships between textual mentions and their corresponding entities. Rather than relying on exact lexical overlap, learned representations enable the identification of semantically equivalent references that may use different surface forms.

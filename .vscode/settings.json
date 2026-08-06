@@ -4,7 +4,7 @@
             "alias": "data-duckdb",
             "type": "file",
             "path": "/home/massimo/projects/linker/data/data-duckdb.duckdb",
-            "attached": true,
+            "attached": false,
             "readOnly": false
         }
     ],

@@ -1,0 +1,13 @@
+\section{Embeddings in Natural Language Processing (NLP)}
+
+Natural language is an unstructured form of information that is represented through words, sentences, and context rather than explicit numerical structures.
+Since machine learning models operate on mathematical representations, NLP systems require a method to transform textual information into a structured format that can be processed computationally. 
+Embeddings provide such a representation by mapping words, sentences, or documents into dense vectors within a continuous vector space, where relationships between textual elements can be represented numerically.
+
+The idea of embeddings is based on the distributional hypothesis, which states that words occurring in similar contexts tend to have related meanings~\cite{harris1954}. 
+Modern embedding methods use neural networks and large-scale training data to learn vector representations that capture patterns in language usage and contextual relationships.
+
+In contrast to traditional word embeddings, which assign a fixed vector to each word, contextual embedding methods generate representations based on the surrounding text. 
+Models such as BERT use transformer architectures to produce context-dependent representations, allowing the same word to receive different representations depending on its usage~\cite{devlin2019bert}.
+
+In this work, embeddings are used to transform unstructured textual information into structured numerical representations that can be compared and processed by mathematical models.

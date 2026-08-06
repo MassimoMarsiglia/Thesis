@@ -1,0 +1,145 @@
+\section{LLM Augmentation}
+
+LLM augmentation was used to generate alternative representations of regulatory references while preserving the original reference-entity association. The objective of this augmentation step is to increase robustness against variations in how regulatory entities are referenced in real-world compliance documents.
+
+The original reference instances were provided as input to a large language model, together with predefined noise categories, which described possible variations in regulatory references. The model was instructed to generate semantically equivalent representations while maintaining the same underlying regulatory entity association.
+
+The augmentation process was designed as a controlled transformation step rather than an open-ended generation process. The LLM was guided using predefined noise categories and was restricted to modifying the provided reference representations. External regulatory information was not introduced during generation, reducing the risk of unsupported information being incorporated into the training dataset.
+
+The generated variations were incorporated into the training dataset as additional positive examples. Augmentation was performed only after the original dataset was already partitioned into training, validation, and test subsets. This ensured that generated variations derived from training examples could not appear in the evaluation partitions, preventing information leakage. The resulting augmented training set allows the retrieval models to learn from different reference styles, including abbreviated names, alternative terminology, and incomplete regulatory identifiers.
+
+\subsection{Noise Taxonomy Design}
+
+A noise taxonomy was created to capture common variations in regulatory references that may negatively impact retrieval performance. During analysis of the regulatory reference dataset, two primary sources of variation were identified: variations in regulatory document titles and variations in descriptive reference information.
+
+Title variations occur when regulatory entities are referenced using shortened names, alternative naming conventions, identifiers, or modified formatting. Description variations occur when contextual information is omitted, summarized, or reformulated while preserving the underlying relationship between the reference and the regulatory entity.
+
+The taxonomy was designed to provide controlled constraints for the LLM augmentation process. Instead of generating arbitrary synthetic examples, the language model is guided to introduce realistic variations that reflect how regulatory documents are commonly referenced in compliance-oriented text.
+
+The identified noise categories are summarized in Table~\ref{tab:noise_taxonomy}.
+
+\begin{table}[H]
+\centering
+\caption{Noise taxonomy used for LLM-based regulatory reference augmentation.}
+\label{tab:noise_taxonomy}
+\begin{tabular}{p{3.5cm}p{10cm}}
+\hline
+\textbf{Category} & \textbf{Noise Patterns} \\
+\hline
+
+Title variation &
+Title shortened, alias title, partial title, acronym substitution, abbreviation used, identifier used instead of title, informal short name, word order variation, punctuation variation, parenthetical inclusion, common name substitution.
+\\[0.3cm]
+
+Identifier variation &
+Article number extraction, specific article reference, legal act type removal.
+\\[0.3cm]
+
+Description simplification &
+Boilerplate removed, date removed, descriptive clauses omitted, document type retained while description removed, key phrase extracted.
+\\[0.3cm]
+
+Context modification &
+Organization removed, legal basis extraction, relationship type extraction, procedural context removed, operative event removal, conditional reference extraction.
+\\[0.3cm]
+
+Domain-specific information removal &
+Scientific basis omitted, technical specification removal, historical context removal, alias mentioned.
+\\
+
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{LLM Augmentation Example}
+
+The augmentation process transforms an existing reference-entity pair into additional training examples by modifying only the reference representation while preserving the original target entity. The following example demonstrates the transformation of an existing training instance.
+
+The original reference was linked to the following regulatory entity:
+
+\begin{figure}[H]
+\centering
+
+\begin{tcolorbox}[
+    colback=gray!10,
+    colframe=gray!50,
+    boxrule=0.5pt,
+    arc=2mm
+]
+\ttfamily
+\small
+
+\textbf{[ORIGINAL REFERENCE DOCUMENT]}
+
+Title: Regulation (EU) 2024/1735 (Net-zero Technology Manufacturing Ecosystem)
+
+\vspace{0.2cm}
+
+Description: The Regulation references Regulation (EU) 2024/1735 regarding the potential for permanent carbon storage in third countries, subject to international agreements and equivalent conditions for geological storage.
+
+\vspace{0.2cm}
+
+\textbf{[TARGET DOCUMENT]}
+
+Title: Regulation (EU) 2024/1735 of the European Parliament and of the Council of 13 June 2024 on establishing a framework of measures for strengthening Europe’s net-zero technology manufacturing ecosystem and amending Regulation (EU) 2018/1724
+
+\vspace{0.2cm}
+
+\textbf{[DOCUMENT METADATA]}
+
+Short title: Regulation (EU) 2024/1735
+
+Document type: regulatory\_document
+
+\vspace{0.2cm}
+
+\textbf{[ALIASES]}
+
+- Net-Zero Industry Act
+
+- NZIA
+
+\vspace{0.4cm}
+
+\rule{\linewidth}{0.2pt}
+
+\vspace{0.4cm}
+
+\textbf{[AUGMENTED REFERENCE DOCUMENT]}
+
+Title: NZIA
+
+\vspace{0.2cm}
+
+Description: Framework for strengthening Europe’s net-zero technology manufacturing ecosystem and amending Regulation (EU) 2018/1724.
+
+\vspace{0.2cm}
+
+\textbf{[TARGET DOCUMENT]}
+
+Title: Regulation (EU) 2024/1735 of the European Parliament and of the Council of 13 June 2024 on establishing a framework of measures for strengthening Europe’s net-zero technology manufacturing ecosystem and amending Regulation (EU) 2018/1724
+
+\vspace{0.2cm}
+
+\textbf{[DOCUMENT METADATA]}
+
+Short title: Regulation (EU) 2024/1735
+
+Document type: regulatory\_document
+
+\vspace{0.2cm}
+
+\textbf{[ALIASES]}
+
+- Net-Zero Industry Act
+
+- NZIA
+
+\end{tcolorbox}
+
+\caption{Example of LLM-generated augmentation while preserving the original reference-entity association.}
+\label{fig:llm_augmentation_example}
+
+\end{figure}
+
+The augmented example differs from the original reference only in its representation of the regulatory entity. The target entity remains unchanged, allowing the generated instance to be incorporated as an additional positive training example.

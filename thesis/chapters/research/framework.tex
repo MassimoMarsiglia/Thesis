@@ -1,0 +1,150 @@
+\section{Proposed Framework}
+
+This section introduces the proposed framework for regulatory entity linking. The framework integrates transformer-based dense retrieval, cross-encoder reranking, and large language model (LLM)-based data augmentation to improve the identification and resolution of regulatory references within complex regulatory documents.
+
+The proposed framework consists of four primary components:
+
+\begin{enumerate}
+    \item Data preparation and construction of a regulatory reference dataset
+    \item Development of dense retrieval representations using a bi-encoder architecture
+    \item Domain adaptation through hard negative mining and noise-aware data augmentation
+    \item Two-stage regulatory entity linking through candidate retrieval and semantic reranking
+\end{enumerate}
+
+An overview of the final inference architecture is presented in Figure~\ref{fig:model_architecture}. The following sections describe the individual components of the proposed framework.
+
+\begin{figure}[!htbp]
+\centering
+
+\begin{tikzpicture}[
+    node distance=1.5cm,
+    every node/.style={font=\small},
+    block/.style={
+        rectangle,
+        rounded corners,
+        draw=black,
+        minimum width=5cm,
+        minimum height=0.9cm,
+        align=center,
+        fill=gray!10
+    },
+    decision/.style={
+        shape=diamond,
+        draw=black,
+        aspect=2,
+        align=center,
+        fill=gray!10
+    },
+    arrow/.style={->, thick}
+]
+
+\node[block] (docs)
+{Regulatory Documents};
+
+\node[block, below=of docs] (bi)
+{Bi-Encoder Retrieval \\ Semantic Candidate Generation};
+
+\node[block, below=of bi] (candidate)
+{Top-$k$ Candidate \\ Regulatory Entities};
+
+\node[block, below=of candidate] (cross)
+{Cross-Encoder Reranking \\ Query-Document Interaction};
+
+\node[block, below=of cross] (score)
+{Relevance Score \\ Confidence Estimation};
+
+\node[decision, below=of score, yshift=-0.3cm] (decision)
+{Confidence \\ Threshold};
+
+\node[block, below left=1.5cm and 1cm of decision] (auto)
+{Automatic \\ Entity Linking};
+
+\node[block, below right=1.5cm and 1cm of decision] (human)
+{Human Expert \\ Review};
+
+\draw[arrow] (docs)--(bi);
+\draw[arrow] (bi)--(candidate);
+\draw[arrow] (candidate)--(cross);
+\draw[arrow] (cross)--(score);
+\draw[arrow] (score)--(decision);
+
+\draw[arrow] (decision)--node[above left]{High confidence}(auto);
+\draw[arrow] (decision)--node[above right]{Low confidence}(human);
+
+\end{tikzpicture}
+
+\caption{Conceptual overview of the proposed regulatory entity linking framework.}
+\label{fig:model_architecture}
+
+\end{figure}
+
+\subsection{Data Preparation}
+
+The proposed framework begins with a data preparation stage responsible for transforming raw regulatory documents into structured representations suitable for machine learning models. This stage establishes the necessary inputs for subsequent retrieval and reranking components.
+
+The framework incorporates the extraction of regulatory references, contextual information, and relevant document characteristics to support the identification of relationships between references and regulatory entities. These representations provide the foundation for generating training examples and enabling transformer-based models to learn meaningful semantic relationships.
+
+\subsection{Construction of the Regulatory Reference Dataset}
+
+A central component of the proposed framework is the construction of a regulatory reference dataset that represents associations between regulatory references and their corresponding entities.
+
+Due to the structured characteristics of regulatory references, the framework incorporates heuristic-based approaches to identify reference patterns and establish initial relationships between mentions and regulatory entities. These relationships provide the supervision required for training retrieval models while reducing the dependency on extensive manual annotation.
+
+The framework further incorporates a dataset partitioning strategy to enable reliable model evaluation. The dataset is separated into training, validation, and test subsets to support model optimization, configuration selection, and final performance assessment.
+
+To evaluate generalization under realistic compliance scenarios, the framework considers document-level separation between dataset partitions. This ensures that evaluation is performed on regulatory documents that are not observed during model development, allowing the framework to measure its ability to resolve references within previously unseen documents.
+
+\subsection{Embedding Model Development}
+
+The first retrieval component of the proposed framework is a bi-encoder model designed to learn dense semantic representations of regulatory references and candidate entities.
+
+The bi-encoder functions as an efficient candidate generation mechanism by mapping references and entities into a shared embedding space. This enables large-scale retrieval through similarity-based comparison rather than exhaustive evaluation of all possible reference-entity combinations.
+
+To improve retrieval performance, the framework incorporates iterative hard negative mining. During this process, highly similar but incorrect candidates are identified and incorporated into subsequent training iterations. These challenging examples encourage the embedding model to learn more discriminative representations and improve its ability to distinguish between closely related regulatory entities.
+
+The resulting bi-encoder provides the candidate retrieval stage of the proposed two-stage architecture.
+
+\subsection{Domain Noise Characterization}
+
+Regulatory documents frequently contain variations that may not be represented within an initial training dataset. These variations can originate from differences in formatting, terminology, citation styles, and document-specific writing conventions.
+
+To address this challenge, the proposed framework incorporates an LLM-based domain noise characterization stage. This stage is designed to analyze unlabeled regulatory documents and identify recurring sources of variation within regulatory references.
+
+The identified variations are represented through a noise taxonomy describing common deviations observed in regulatory data. Examples of such variations include:
+
+\begin{itemize}
+    \item abbreviated regulatory references
+    \item incomplete citations
+    \item typographical variations
+    \item formatting inconsistencies
+    \item organization-specific terminology
+\end{itemize}
+
+The resulting taxonomy provides an abstract representation of domain-specific noise patterns. By capturing general characteristics of regulatory variation rather than individual examples, the taxonomy enables the framework to incorporate realistic data variability without directly transferring specific regulatory references or document-specific information from the unlabeled corpus into the training data.
+
+\subsection{LLM-Based Data Augmentation}
+
+The proposed framework incorporates LLM-based data augmentation to introduce realistic variations into the constructed training dataset. The generated noise taxonomy is used to guide the augmentation process by defining the types of variations that should be simulated.
+
+The LLM applies the identified noise patterns to existing regulatory reference examples while preserving their underlying semantic relationships. This enables the generation of additional training instances that represent potential variations encountered within real-world regulatory documents.
+
+By separating noise characteristics from the individual regulatory references in which they occur, the augmentation process is designed to avoid directly incorporating information from the unlabeled corpus. Instead, the generated examples reflect general patterns of regulatory variation, allowing the framework to increase training diversity while maintaining separation between the original data sources and the generated training instances.
+
+Through noise-aware augmentation, the framework aims to provide retrieval models with exposure to a broader range of regulatory reference expressions and improve their ability to handle previously unseen variations.
+
+\subsection{Cross-Encoder Development}
+
+The final retrieval stage incorporates a cross-encoder model for fine-grained evaluation of candidate regulatory entities.
+
+Following candidate generation by the bi-encoder, the cross-encoder jointly processes the regulatory reference and candidate entity to model detailed semantic interactions. This enables more accurate relevance estimation by considering relationships that may not be captured through independent embeddings.
+
+The framework further incorporates hard negative mining for cross-encoder optimization. Challenging candidates retrieved by the bi-encoder are used to improve the model's ability to differentiate between highly similar regulatory entities.
+
+The combination of efficient candidate generation and interaction-based reranking provides a scalable approach for regulatory entity linking while maintaining high semantic precision.
+
+\subsection{Confidence-Based Human Oversight}
+
+Due to the high reliability requirements of compliance applications, the proposed framework incorporates a confidence-based decision mechanism. Predictions exceeding a predefined confidence threshold can be automatically resolved, while uncertain predictions can be forwarded for human verification.
+
+Although human review is primarily intended as a reliability mechanism, the collected feedback can provide a valuable source of additional training data. In particular, difficult or ambiguous regulatory references identified during review may be incorporated into future training iterations to improve model robustness.
+

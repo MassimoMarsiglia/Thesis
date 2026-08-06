@@ -1,0 +1,11 @@
+\subsection{Hard Negative Mining}
+
+Following the initial training phase of the bi-encoder, a hard negative mining procedure was utilized to generate additional training examples for continued fine-tuning. The procedure was introduced to provide more challenging negative examples than those obtained through random sampling.
+
+The trained bi-encoder was used to encode the regulatory entity collection into dense vector representations, which were indexed for similarity-based retrieval. For each regulatory reference, the corresponding embedding was generated and used to retrieve the top-$k$ most similar regulatory entities.
+
+The ground-truth regulatory entity was removed from the retrieved candidate set, and the highest-ranked remaining entities were selected as hard negatives. These candidates represented semantically similar but incorrect regulatory entities, such as documents with overlapping titles, related regulatory terminology, or similar identifiers.
+
+To prevent incorrect negative assignments, retrieved candidates were compared against the labelled reference-entity associations generated during dataset construction. Candidates corresponding to valid reference-entity relationships were excluded before being added to the hard negative set.
+
+The resulting hard negative examples were incorporated into the training dataset and used during continued fine-tuning of the bi-encoder. This expanded training procedure allowed the model to learn improved separation between closely related regulatory entities.

@@ -1,0 +1,19 @@
+\subsection{The Emergence of Modern Hopfield Networks}
+
+The limitations of classical Hopfield networks motivated the development of more expressive associative memory architectures. A major advancement was introduced by Ramsauer et al. with the modern Hopfield network, which replaces discrete attractor states with memories represented in continuous high-dimensional spaces \cite{ramsauer2021hopfield}.
+
+Instead of storing memories implicitly within fixed network parameters, modern Hopfield networks represent memories explicitly as continuous vectors. Retrieval is performed by comparing an input query representation against stored memory representations, allowing the system to identify relevant memories based on similarity.
+
+An important result of this formulation is its connection to the attention mechanism used in Transformer models. Ramsauer et al. showed that the update rule of modern Hopfield networks is mathematically equivalent to the attention mechanism, establishing attention as a form of continuous associative memory retrieval \cite{ramsauer2021hopfield,vaswani2017attention}.
+
+\subsection{External Memory Representation}
+
+A key distinction between classical and modern Hopfield networks is the separation between model parameters and stored memories. Classical Hopfield networks encode memories within the connection weights of the network, meaning that adding new memories requires modifying the model itself. 
+
+Modern Hopfield networks instead maintain memories as an external set of representations. This enables memories to be added or updated independently of the underlying retrieval mechanism, avoiding the need to retrain the model when new information becomes available.
+
+This property makes modern Hopfield networks particularly relevant for adaptive machine learning systems, where the stored knowledge may change over time while the core model remains unchanged.
+
+\subsection{Summary}
+
+Classical Hopfield networks introduced the concept of associative memory but were limited by discrete memory representations and restricted storage capacity. Modern Hopfield networks extend this concept by leveraging continuous representation spaces and external memory storage, enabling scalable and dynamically updateable associative memory. These properties provide a foundation for machine learning systems that separate the process of retrieving information from the storage of memories.

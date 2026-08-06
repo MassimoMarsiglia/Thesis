@@ -1,0 +1,17 @@
+\babel@toc {english}{}\relax 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {4.1}{\ignorespaces Experimental environment used for model development and evaluation.}}{30}{table.84}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Models used within the implemented regulatory entity linking framework.}}{31}{table.86}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Selected features used for regulatory entity linking.}}{32}{table.90}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Distribution of heuristic matching strategies used for regulatory reference linking.}}{33}{table.94}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Distribution of regulatory reference examples across dataset partitions.}}{34}{table.96}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Bi-encoder training configuration.}}{37}{table.100}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Noise taxonomy used for LLM-based regulatory reference augmentation.}}{39}{table.104}%
+\addvspace {10\p@ }
+\def \@chapapp {\appendixname }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

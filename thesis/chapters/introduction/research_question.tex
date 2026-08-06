@@ -1,0 +1,23 @@
+\section{Research Gap}
+
+Automated compliance workflows rely on the ability to accurately identify and link references within regulatory documents to their corresponding legal entities. However, regulatory entity linking remains a challenging and insufficiently explored domain due to the complex structure of legal texts, variations in regulatory terminology, and the frequent use of multiple references for the same legal act. Existing entity linking approaches are primarily developed and evaluated on general-purpose datasets and do not fully address the characteristics of regulatory knowledge.
+
+Transformer-based models have demonstrated strong capabilities in semantic representation and retrieval, making them a promising approach for regulatory entity linking. However, the mechanisms underlying their associative retrieval capabilities are not yet fully understood from the perspective of regulatory knowledge processing. Recent theoretical work has shown that Transformer attention mechanisms can be interpreted through the lens of Modern Hopfield Networks, where attention updates correspond to associative memory retrieval processes.
+
+Despite this theoretical connection, the implications of associative memory-based interpretations of Transformer architectures for regulatory entity linking and automated compliance workflows remain insufficiently investigated. Understanding how these mechanisms contribute to robust retrieval and decision-making is essential for developing reliable AI-supported compliance systems.
+
+\section{Research Question}
+
+\textbf{RQ:} RQ: To what extent can attention-based retrieval models, motivated by the associative memory framework of Modern Hopfield Networks, improve regulatory entity linking?
+
+To address this question, the following sub-research questions are defined:
+
+\textbf{RQ1:} How can a regulatory reference entity linking framework be designed to address the challenges of regulatory references and semi-structured regulatory data?
+
+\textbf{RQ2:} How can data preparation and augmentation strategies support the development of entity linking models?
+
+\textbf{RQ3:} How effectively can Transformer-based retrieval approaches identify and resolve regulatory references within complex legal documents?
+
+\textbf{RQ4:} How does the proposed framework perform in accurately linking regulatory references to their corresponding entities?
+
+\textbf{RQ5:} How can confidence-based human oversight mechanisms be integrated into the proposed framework to identify cases requiring additional expert review?

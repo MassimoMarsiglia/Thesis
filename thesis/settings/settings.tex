@@ -1,0 +1,113 @@
+% Wichtige Pakete und Grundeinstellungen, verwendet Dokumentenklasse "scrbook" 
+\documentclass[
+		chapterprefix=false, 
+		a4paper, 
+		twoside, 
+		parskip=half, 
+		listof=totoc, 
+		bibliography=totoc, 
+		numbers=noendperiod, 
+		captions=tableheading
+]{scrbook}
+
+%Anpassung der Seitenränder 
+%% Geometrisches ...
+\usepackage[inner=3cm]{geometry}
+\makeatletter
+\setlength\paperheight     {297mm}
+\setlength\paperwidth  	   {210mm}
+%\setlength\headheight      {2ex}
+\setlength\headsep         {4ex} %2
+\setlength\footskip        {35pt} %25
+\setlength\textwidth       {155mm}
+\setlength\textheight      {240mm} %245
+%\setlength{\@tempdima}     {\paperwidth}
+%\addtolength{\@tempdima}   {-2in}
+%\addtolength{\@tempdima}   {-\textwidth}
+%\setlength\oddsidemargin   {0.5\@tempdima} %replaced by 'inner'
+%\setlength\evensidemargin  {\oddsidemargin} %replaced by 'inner'
+%\setlength{\@tempdima}     {\paperheight}
+%\addtolength{\@tempdima}   {-3in}
+%\addtolength{\@tempdima}   {-\textheight}
+%\setlength\topmargin       {.5\@tempdima}
+\setlength\topmargin       {-1,2cm}
+\setlength\footnotesep     {12\p@}
+\setlength{\skip\footins}  {10\p@ \@plus 2\p@ \@minus 4\p@}
+\setlength{\marginparsep}  {1pt}
+\setlength{\marginparwidth}{20mm}
+\makeatother 
+
+
+%% Scalable fonts
+\usepackage{lmodern}
+%% set font size (needs to be loaded after \begin{document})
+\AtBeginDocument{%
+  \KOMAoption{fontsize}{11.5pt}%
+%  \recalctypearea % not needed because use of geometry package
+}
+%% Unterstützung von Umlauten und anderen Sonderzeichen (UTF-8)
+\usepackage{eurosym}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\DeclareUnicodeCharacter{20AC}{\euro} %Euro-Symbol in UTF-8
+
+%% Allgemeine Anpassungen 
+\usepackage{scrhack} %Tweaks für scrbook
+\usepackage[automark,headsepline]{scrlayer-scrpage} %Anpassung von Kopf- und Fußzeile
+\usepackage{paralist}  %Kompakte Listen
+%\usepackage[onehalfspacing]{setspace} %Zeilenabstand 1,5
+\usepackage{setspace} %flexibler Zeilenabstand
+\setstretch{1.15} %Zeilenabstand 1.15
+
+\usepackage[stretch=10]{microtype} %Verbesserte Darstellung der Buchstaben zueinander
+\usepackage{float} %Unterstützung fester Positionierung  (H)
+\usepackage{csquotes} %wird von babel benötigt
+
+%Glossar, Stichworverzeichnis (Akronyme als eigene Liste)
+%\usepackage[toc, acronym]{glossaries} 
+
+%% Mathematik:
+\RequirePackage{amssymb, amsmath}
+\RequirePackage{ifthen}
+\RequirePackage{pifont} % Zapf Dingbats : https://ctan.ebinger.cc/tex-archive/macros/latex/required/psnfss/psnfss2e.pdf
+
+%% Erweiterte Tabellen:
+\usepackage{array, tabularx}
+\setlength\extrarowheight{2pt} %extra Top-Padding in Latex-Tabellen
+\usepackage{multirow}
+\usepackage{longtable} %Umbrüche in Tabellen
+
+%% Grafiken:
+% Definition eigener Farben 
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{tikz} % Vektorgrafiken, lädt graphicx automatisch
+\usepackage{bmpsize} 
+
+%Verknüpfungen im Dokument, Links werden durch "hidelink" nicht explizit hervorgehoben
+%\PassOptionsToPackage{hyphens}{url}
+\usepackage[hidelinks,german,hypertexnames=false]{hyperref}
+%\hypersetup{breaklinks=true}
+\usepackage{breakurl}
+%\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks% save the current one
+%  \do\a\do\b\do\c\do\d\do\e\do\f\do\g\do\h\do\i\do\j%
+%  \do\k\do\l\do\m\do\n\do\o\do\p\do\q\do\r\do\s\do\t%
+%  \do\u\do\v\do\w\do\x\do\y\do\z\do\A\do\B\do\C\do\D%
+%  \do\E\do\F\do\G\do\H\do\I\do\J\do\K\do\L\do\M\do\N%
+%  \do\O\do\P\do\Q\do\R\do\S\do\T\do\U\do\V\do\W\do\X%
+%  \do\Y\do\Z\do\*\do\-\do\~\do\'\do\"\do\-}%
+\usepackage{enumitem}
+
+\usepackage{tikz}
+
+\usetikzlibrary{positioning, shapes.geometric}
+
+\usepackage{makecell}
+
+\usepackage{float}
+
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\usepackage{tcolorbox}
+\usepackage{listings}
+\tcbuselibrary{breakable}

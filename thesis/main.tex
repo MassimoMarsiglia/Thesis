@@ -1,0 +1,131 @@
+%%
+%%  Hochschule für Technik und Wirtschaft Berlin --  Abschlussarbeit
+%%
+%%  Hauptdokument
+%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Einstellungen und Anpassungen
+\input{settings/settings}  		% Import der Pakete und Stil des Dokuments
+\input{settings/adjustments} 	% Weitere Pakete und Anpassungen (Sprache, Quellenverwaltung, etc.)
+\input{settings/titlepage}		% Layout der Titelseite
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Im folgenden Bereich müssen Sie Anpassungen für das Deckblatt der Arbeit vornehmen!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%% Titel und Author 
+\titel{Evaluation of Modern Hopfield Networks as Associative Memory for Compliance Processes: A Comparative Study with Alternative Retrieval Architectures}
+\autor{Massimo Diego Marsiglia}
+\matrikelnr{s0589958}
+%% Version und Abgabedatum
+\version{0.2$\alpha$} 	%ToDo: wird derzeit noch nicht genutzt
+\datum{07.08.2026}   	% Abgabedatum der Arbeit
+%% Typ der Arbeit
+% \thesistyp{Masterarbeit}
+\thesistyp{Bachelorarbeit}
+% \abschluss{Master of Engineering (M. Eng.)}
+\abschluss{Bachelor of Science (B. Sc.)}
+%% Betreuer
+\firstExaminer{Prof. Dr. Katharina Simbeck}
+\secondExaminer{Prof. Dr. Axel Hochstein}
+%% Fachbereich
+\fachbereich{4}
+\studiengang{Wirtschaftsinformatik}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Ende des Bereichs für Anpassungen
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Metadaten zu PDF hinzufügen
+\hypersetup{
+pdftitle = {\thetitel},
+pdfsubject = {\thethesistyp},
+pdfauthor = {\theautor},
+%pdfkeywords = {Stichwort1, Stichwort2 ...} ,
+pdfcreator = {LaTeX with hyperref},
+pdfproducer = {pdflatex}
+}
+%% Pfad zu den Bildern
+\graphicspath{
+  {pictures/},
+}
+%% Current Bug-Fixes
+% 2024-02 
+% Error-Message ! Argument of \MT@gobble@to@nil has an extra }.
+% https://tex.stackexchange.com/questions/702778/argument-of-mtgobbletonil-has-an-extra
+\microtypesetup{nopatch=item}
+
+%% Custom includes go here!!!
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Start des Dokuments
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%% Deckblatt erzeugen
+\maketitle
+
+%% Inhaltsverzeichnis erstellen
+\cleardoubleoddpage
+\pagenumbering{Roman}
+\tableofcontents \clearpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% In diesem Bereich müssen Sie Anpassungen für den Inhalt der Arbeit vornehmen!
+%% Kurzzusammenfassung
+% \input{abstract_de.tex}
+\input{abstract_en.tex}
+\clearpage
+
+%% Hauptteil
+\cleardoubleoddpage
+\pagenumbering{arabic}
+
+
+\input{chapters/chapters.tex}
+
+%% Anhang
+\cleardoubleoddpage
+\appendix
+\input{chapters/99_Anhang.tex}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Abkürzungsverzeichnis
+% 	Befehl: makeindex Thesis.nlo -s nomencl.ist -o Thesis.nls
+%
+\input{references/acronyms.tex}
+\cleardoublepage
+\markboth{\nomname}{\nomname}
+\printnomenclature
+
+%% Abbildungsverzeichnis
+\listoffigures \clearpage
+
+%% Tabellenverzeichnis
+\listoftables \clearpage
+
+%% Quelltextverzeichnis
+\lstlistoflistings \clearpage
+
+%% Stichwortverzeichnis
+%	Befehl: makeindex Thesis
+%
+\printindex \clearpage
+
+%% Literaturverzeichnis
+%	Befehl: biber Thesis
+%
+\printbibliography[heading=bibintoc, title={\babel{Literaturverzeichnis}{Bibliography}}]
+\clearpage
+%Literaturverzeichnisse getrennt nach Stichwort
+%\printbibliography[heading=bibintoc, keyword={book}, title={Literaturverzeichnis}]\clearpage
+%\printbibliography[heading=bibintoc, keyword={online}, title={Onlinequellen}]\clearpage
+%\printbibliography[heading=bibintoc, keyword={image}, title={Bildquellen}]\clearpage
+
+%% Erklärung zur Eigenständigkeit
+\input{Eigenstaendigkeitserklaerung}
+
+\end{document}

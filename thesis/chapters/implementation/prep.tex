@@ -1,0 +1,52 @@
+\subsection{Data Preparation and Feature Selection}
+
+The dataset used in this work was provided by Fairfield \& Archer, a partner organization specializing in regulatory compliance solutions. The dataset consists of structured regulatory information extracted from compliance documents and was provided for research and evaluation purposes.
+
+The provided dataset serves as the initial input for the regulatory entity linking framework.
+
+\subsection{Feature Selection}
+
+For the regulatory entity linking task, only features relevant to identifying relationships 
+between regulatory references and regulatory entities are retained.
+
+The selected features represent the information required to identify relationships between regulatory references and their corresponding entities. The main features used within the framework are described below.
+
+Table~\ref{tab:selected_features} summarizes the selected features and their role within 
+the linking process.
+
+\begin{table}[ht]
+\centering
+\caption{Selected features used for regulatory entity linking.}
+\label{tab:selected_features}
+
+\textbf{Pair Item 1: Regulatory Reference}
+
+\begin{tabular}{p{4cm} p{8cm}}
+\hline
+\textbf{Feature} & \textbf{Description} \\
+\hline
+Source Build ID & Identifier of the source document or dataset entry. \\
+Reference Title & The title of the document being refered to, as \\ 
+& defined in the reference \\
+Description & Description, that describes how the source document \\
+& is related to the document being referred to. \\
+Relationship Type & The type of relationship the source document has to \\
+& the document being referred to.\\
+\hline
+\end{tabular}
+
+\vspace{1cm}
+
+\textbf{Pair Item 2: Regulatory Entity}
+
+\begin{tabular}{p{4cm} p{8cm}}
+\hline
+\textbf{Feature} & \textbf{Description} \\
+\hline
+Build ID & Identifier of the Regulatory Document Entity \\
+Short Title & shortened title of the Regulatory Document Entity \\
+Aliases & Alternative names associated with the entity. \\
+Document Type & The type of document being described \\
+\hline
+\end{tabular}
+\end{table}

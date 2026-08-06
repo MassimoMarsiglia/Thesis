@@ -1,0 +1,19 @@
+\section{Retrieval in Machine Learning Data Processing Pipelines}
+
+A central design question in machine learning systems is where task-relevant knowledge should be stored. In traditional parametric models, knowledge is acquired during training and encoded within the model parameters. Consequently, adapting to new information, updated requirements, or changing domain knowledge generally requires retraining or fine-tuning the model.
+
+Retrieval-based approaches separate learned model behavior from stored knowledge by maintaining an external knowledge source that can be queried during inference. Rather than relying solely on information encoded in the model parameters, the model is provided with additional context retrieved for a given input. This external knowledge can be updated independently of the model, allowing changes to the underlying information source without modifying the trained model itself.
+
+Retrieved information may include, but is not limited to:
+\begin{itemize}[noitemsep]
+    \item predefined rules,
+    \item domain-specific knowledge,
+    \item previous decisions, or
+    \item precomputed feature embeddings.
+\end{itemize}
+
+Retrieval systems generally consist of two stages: indexing and querying. During indexing, documents, knowledge objects, or data instances are transformed into representations that support efficient search. During inference, an input query is represented in the same embedding space, enabling the retrieval of the most relevant stored information according to a similarity measure.
+
+Traditional retrieval methods rely on lexical matching techniques such as the Vector Space Model and probabilistic ranking algorithms including BM25, which rank documents based on keyword overlap and statistical relevance \cite{salton1983introduction,robertson2009probabilistic}. More recent retrieval systems employ dense vector representations, allowing semantically similar queries and documents to be matched even when they do not share the same vocabulary. This enables retrieval based on semantic similarity rather than exact lexical overlap.
+
+In the context of this work, retrieval systems serves as an external memory mechanism that complements the associative memory represented by the model parameters. The distinction between parametric memory and retrieval memory forms the basis for the comparison presented in this thesis.

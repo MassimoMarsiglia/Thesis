@@ -1,0 +1,60 @@
+\section{Cross-Encoder Models}
+
+Cross-encoder architectures are neural ranking models that jointly process a query and a document to directly estimate their semantic relationship. Unlike bi-encoders, which independently encode inputs into separate vector representations, cross-encoders allow direct interaction between query and document tokens through transformer self-attention mechanisms. This enables more precise relevance estimation by allowing the model to capture fine-grained relationships between input sequences, at the cost of increased computational complexity \cite{nogueira2019passage, nogueira2020document}.
+
+In modern retrieval systems, cross-encoders are typically used as a second-stage reranking model. After a bi-encoder retrieves a set of candidate documents, the cross-encoder evaluates these candidates individually and produces a more accurate ranking based on deeper semantic interactions between the query and retrieved passages \cite{nogueira2019passage, karpukhin2020dense}.
+
+\subsection{Transformer-Based Interaction Modeling}
+
+The primary distinction between bi-encoders and cross-encoders is the point at which interaction occurs. A cross-encoder combines the query and document into a single input sequence:
+
+\begin{equation}
+X = q \oplus \delta \oplus d
+\end{equation}
+
+where $q$ represents the query, $d$ represents the document, $\delta$ represents a delimiter token separating the two inputs, and $\oplus$ denotes sequence concatenation.
+
+The combined sequence is processed by a transformer encoder, allowing every token in the query to attend directly to every token in the document. Through self-attention, the model learns relationships between specific concepts, entities, and contextual information contained in both inputs \cite{vaswani2017attention, devlin2019bert}.
+
+The resulting contextual representation can then be passed through a classification or regression layer to produce a relevance score:
+
+\begin{equation}
+score(q,d)=f_{\theta}(q,d)
+\end{equation}
+
+where $f_{\theta}$ represents the learned cross-encoder function. This formulation allows the model to directly estimate the relevance of a query-document pair rather than relying on similarity between independently generated embeddings \cite{nogueira2019passage}.
+
+\subsection{Advantages and Limitations}
+
+The primary advantage of cross-encoders is their ability to capture fine-grained semantic interactions. Because the query and document are processed together, the model can identify relationships that independent embeddings may overlook. This makes cross-encoders particularly effective in domains where subtle contextual distinctions determine relevance \cite{nogueira2019passage}.
+
+For compliance-related applications, this capability is important because regulatory interpretation often depends on contextual relationships. A relevant document may not contain identical terminology to the query but may describe equivalent obligations, restrictions, or procedural requirements. Transformer-based interaction models are well suited for these tasks because they can capture contextual meaning beyond direct lexical overlap \cite{devlin2019bert}.
+
+However, the increased interaction between inputs also introduces significant computational costs. Since every query-document pair must be processed independently, applying a cross-encoder directly to an entire document collection is computationally infeasible for large-scale retrieval tasks \cite{nogueira2019passage}.
+
+Therefore, cross-encoders are generally applied after an initial retrieval stage performed by a more efficient model such as a bi-encoder. This two-stage architecture enables efficient candidate retrieval while preserving the ranking accuracy of interaction-based models \cite{karpukhin2020dense}.
+
+\subsection{Cross-Encoders and Attention-Based Retrieval}
+
+Cross-encoders demonstrate the importance of attention-based interaction in understanding semantic relationships. The self-attention mechanism allows the model to dynamically determine which parts of a document are relevant to specific parts of a query. This ability emerges from the attention mechanism, where token representations are updated based on their relationships with other tokens in the sequence \cite{vaswani2017attention}.
+
+This interaction-based retrieval paradigm shares conceptual similarities with modern Hopfield networks. Both approaches rely on attention-driven retrieval mechanisms to identify relevant patterns from stored representations. Modern Hopfield networks extend classical associative memory by introducing continuous states and attention-based retrieval dynamics, providing a theoretical connection between attention mechanisms and memory retrieval \cite{ramsauer2021hopfield}.
+
+In modern Hopfield networks, attention determines which stored memories are retrieved based on similarity between query patterns and stored representations. Similarly, a cross-encoder determines document relevance by modeling interactions between query and document representations. This connection highlights a broader shift from static feature matching toward dynamic retrieval mechanisms based on learned associations \cite{ramsauer2021hopfield}.
+
+\subsection{Role in Compliance-Oriented Retrieval Systems}
+
+Compliance systems require accurate retrieval because incorrect information retrieval can lead to incomplete assessments or incorrect interpretations of regulatory requirements. While bi-encoders provide efficient candidate generation, cross-encoders improve reliability by performing deeper semantic evaluation of retrieved candidates.
+
+A two-stage retrieval architecture therefore combines the strengths of both approaches:
+
+\begin{enumerate}
+    \item The bi-encoder efficiently retrieves potentially relevant documents from a large knowledge base.
+    \item The cross-encoder performs detailed semantic analysis and reranks these candidates according to relevance.
+\end{enumerate}
+
+This combination provides a practical foundation for compliance applications by achieving both scalability and semantic precision. Furthermore, the attention-based nature of cross-encoders aligns with modern memory-based architectures, including modern Hopfield networks, where retrieval is achieved through learned associations rather than explicit symbolic matching \cite{ramsauer2021hopfield}.
+
+Beyond ranking, the relevance scores produced by cross-encoders can provide an additional mechanism for supporting human oversight in compliance workflows. Since compliance applications often require high levels of accuracy and accountability, automated retrieval systems should be capable of identifying cases where the available evidence is insufficient or where additional expert review is required. The confidence estimates derived from cross-encoder scores can therefore be used to establish review thresholds, allowing high-confidence results to proceed automatically while lower-confidence cases are escalated for human evaluation.
+
+This human-in-the-loop approach is particularly important in regulatory domains, where incorrect retrieval or interpretation may have significant consequences. Rather than replacing expert judgment, cross-encoder-based retrieval systems can support decision-making by reducing the amount of information requiring manual inspection while ensuring that uncertain cases receive additional attention.
