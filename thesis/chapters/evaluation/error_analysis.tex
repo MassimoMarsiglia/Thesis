@@ -1,1 +1,33 @@
 \section{Error Analysis}
+
+\subsection{Limitations of Heuristic Labelling and Data Augmentation}
+
+One potential source of error is the reliance on heuristically labelled data. While heuristic labelling provides an efficient approach for constructing a training dataset with reduced manual annotation effort, it may not fully capture the complexity and variability of relationships present within the complete regulatory corpus. In particular, rule-based approaches may struggle with ambiguous references, unusual document structures, or cases where additional legal context is required to determine the correct relationship. Although the applied heuristics were designed to identify valid regulatory relationships with high confidence, edge cases may still result in incorrectly assigned labels. While such cases are expected to represent only a small proportion of the dataset, incorrect labels can introduce noise into the training process and influence the learned representation space.
+
+A related limitation concerns the augmentation process. Since augmentation was deliberately constrained to avoid introducing unsupported entities or artificial relationships, the generated examples were limited to variations of information already present within the labelled dataset. While this reduces the risk of introducing incorrect training signals, it also limits the diversity of linguistic patterns observed during training. Consequently, some errors may arise from a mismatch between the augmented examples used during training and the broader range of references encountered during inference.
+
+\subsection{Retrieval and Reranking Errors}
+
+The two-stage retrieval and reranking architecture introduces distinct sources of error. Errors introduced during candidate retrieval cannot be corrected by the cross-encoder, as the correct entity is unavailable during reranking if it is not included within the retrieved candidate set. Conversely, cases where the correct entity is retrieved but not selected indicate limitations in the cross-encoder's ability to distinguish between semantically similar candidates. These two failure modes demonstrate the dependency between retrieval quality and reranking performance in the overall entity linking pipeline.
+
+\subsection{Insufficient Reference Information}
+
+Another potential source of error arises from regulatory references that do not contain sufficient information to reliably identify the corresponding entity. In some cases, references may be incomplete, overly general, or lack distinguishing contextual information, making it difficult to determine the correct entity even when the reference is interpreted correctly. These cases were not explicitly represented in the training data, as the training and augmentation process focused on examples where the underlying relationship could be inferred from the available information. Therefore, errors caused by insufficient reference information primarily represent an inference-time limitation, where the model encounters inputs that fall outside the distribution of the training examples.
+
+\subsection{Cross-Jurisdictional References}
+
+Regulatory references may also introduce challenges when they refer to documents outside the expected legal authority or jurisdiction. Regulatory documents frequently reference multiple legislative layers, including European Union legislation, national legislation, and local regulations. For example, documents within the EUR-Lex ecosystem may contain references to both EU-level legal acts and national implementing measures. If these cross-jurisdictional relationships are not sufficiently represented within the training data or candidate space, the model may incorrectly link a reference to a semantically similar but legally distinct entity. Such errors reflect limitations in available context and candidate representation rather than solely deficiencies in the linking model.
+
+\subsection{Similar and Versioned Regulatory Entities}
+
+The presence of highly similar regulatory entities within the candidate space can also lead to incorrect predictions. Legal corpora often contain multiple related versions of the same act, including amended versions, consolidated versions, and implementing measures. These entities may share substantial textual overlap, making it challenging for the cross-encoder to distinguish between them based solely on the available reference description, particularly when explicit version information is absent.
+
+\subsection{Terminology and Naming Variations}
+
+Finally, variations in terminology and document naming conventions may introduce additional challenges. Regulatory references may use abbreviations, alternative titles, translated names, or incomplete citations, reducing the lexical similarity between references and their corresponding entities. Such variations can make it more difficult for both retrieval and reranking components to correctly identify the intended entity.
+
+\subsection{Jurisdiction-Specific Legal Terminology}
+
+A further source of error may arise from differences in terminology used across regulatory authorities and jurisdictions. Although different legal systems may describe equivalent relationships between documents, the terminology used to express these relationships is not necessarily standardized. For example, while EUR-Lex commonly represents relationships through terms such as amendments, implementing acts, and repeals, other regulatory authorities may use alternative terminology such as modification instruments, subsidiary legislation, or replacement notices to describe related legal concepts. Consequently, references originating from jurisdictions outside the EUR-Lex ecosystem may contain linguistic patterns that are not sufficiently represented within the learned representation space.
+
+This limitation is primarily relevant during inference, as the current work serves as a proof of concept focused on EUR-Lex-based regulatory information. Extending the system to additional jurisdictions would require an analysis of how different authorities describe equivalent regulatory relationships. Based on such an analysis, either representative examples from additional jurisdictions would need to be incorporated into the training dataset, or a normalization layer could be introduced to map jurisdiction-specific terminology into a shared representation space.

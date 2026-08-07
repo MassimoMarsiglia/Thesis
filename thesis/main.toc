@@ -17,69 +17,77 @@
 \contentsline {subsection}{\numberline {2.5.1}Classical Hopfield Networks}{9}{subsection.23}%
 \contentsline {subsection}{\numberline {2.5.2}The Emergence of Modern Hopfield Networks}{9}{subsection.24}%
 \contentsline {subsection}{\numberline {2.5.3}External Memory Representation}{10}{subsection.25}%
-\contentsline {subsection}{\numberline {2.5.4}Summary}{10}{subsection.26}%
-\contentsline {section}{\numberline {2.6}Associative Memory in Biological and Artificial Systems}{10}{section.27}%
-\contentsline {section}{\numberline {2.7}Bi-Encoder Models}{11}{section.28}%
-\contentsline {subsection}{\numberline {2.7.1}Architecture of a Bi-Encoder}{11}{subsection.29}%
-\contentsline {subsection}{\numberline {2.7.2}Bi-Encoders in Two-Stage Retrieval Systems}{12}{subsection.33}%
-\contentsline {subsection}{\numberline {2.7.3}Relationship to Attention-Based Memory Models}{13}{subsection.34}%
-\contentsline {section}{\numberline {2.8}Cross-Encoder Models}{13}{section.35}%
-\contentsline {subsection}{\numberline {2.8.1}Transformer-Based Interaction Modeling}{14}{subsection.36}%
-\contentsline {subsection}{\numberline {2.8.2}Advantages and Limitations}{14}{subsection.39}%
-\contentsline {subsection}{\numberline {2.8.3}Cross-Encoders and Attention-Based Retrieval}{15}{subsection.40}%
-\contentsline {subsection}{\numberline {2.8.4}Role in Compliance-Oriented Retrieval Systems}{15}{subsection.41}%
-\contentsline {section}{\numberline {2.9}Knowledge Types in Regulatory Compliance}{16}{section.44}%
-\contentsline {subsection}{\numberline {2.9.1}Explicit Knowledge}{16}{subsection.45}%
-\contentsline {subsection}{\numberline {2.9.2}Implicit Knowledge}{17}{subsection.46}%
-\contentsline {subsection}{\numberline {2.9.3}Tacit Knowledge}{17}{subsection.47}%
-\contentsline {chapter}{\numberline {3}Research and Artifact Design}{19}{chapter.48}%
-\contentsline {section}{\numberline {3.1}Methodology: Design Science Research}{19}{section.49}%
-\contentsline {section}{\numberline {3.2}Artifact Requirements}{20}{section.56}%
-\contentsline {section}{\numberline {3.3}Proposed Framework}{21}{section.57}%
-\contentsline {subsection}{\numberline {3.3.1}Data Preparation}{23}{subsection.63}%
-\contentsline {subsection}{\numberline {3.3.2}Construction of the Regulatory Reference Dataset}{23}{subsection.64}%
-\contentsline {subsection}{\numberline {3.3.3}Embedding Model Development}{23}{subsection.65}%
-\contentsline {subsection}{\numberline {3.3.4}Domain Noise Characterization}{24}{subsection.66}%
-\contentsline {subsection}{\numberline {3.3.5}LLM-Based Data Augmentation}{24}{subsection.67}%
-\contentsline {subsection}{\numberline {3.3.6}Cross-Encoder Development}{25}{subsection.68}%
-\contentsline {subsection}{\numberline {3.3.7}Confidence-Based Human Oversight}{25}{subsection.69}%
-\contentsline {section}{\numberline {3.4}Design Decisions}{26}{section.70}%
-\contentsline {subsection}{\numberline {3.4.1}Adoption of a Two-Stage Retrieval Architecture}{26}{subsection.71}%
-\contentsline {subsection}{\numberline {3.4.2}Dense Semantic Retrieval}{26}{subsection.72}%
-\contentsline {subsection}{\numberline {3.4.3}Iterative Hard Negative Mining}{26}{subsection.73}%
-\contentsline {subsection}{\numberline {3.4.4}Noise-Aware Data Augmentation}{27}{subsection.74}%
-\contentsline {subsection}{\numberline {3.4.5}Confidence-Based Decision Support}{27}{subsection.75}%
-\contentsline {chapter}{\numberline {4}Implementation}{29}{chapter.76}%
-\contentsline {section}{\numberline {4.1}System Architecture}{29}{section.77}%
-\contentsline {subsection}{\numberline {4.1.1}Model Components}{30}{subsection.82}%
-\contentsline {subsection}{\numberline {4.1.2}Experimental Environment}{30}{subsection.83}%
-\contentsline {subsection}{\numberline {4.1.3}Model Selection and Configuration}{30}{subsection.85}%
-\contentsline {subsection}{\numberline {4.1.4}Data Preparation and Feature Selection}{31}{subsection.88}%
-\contentsline {subsection}{\numberline {4.1.5}Feature Selection}{31}{subsection.89}%
-\contentsline {section}{\numberline {4.2}Regulatory Reference Dataset Construction}{32}{section.91}%
-\contentsline {subsection}{\numberline {4.2.1}Heuristic Data Labelling}{32}{subsection.92}%
-\contentsline {subsection}{\numberline {4.2.2}Dataset Partitioning}{34}{subsection.95}%
-\contentsline {subsection}{\numberline {4.2.3}Pair Transformation}{34}{subsection.97}%
-\contentsline {section}{\numberline {4.3}Bi-Encoder Training}{35}{section.99}%
-\contentsline {subsection}{\numberline {4.3.1}Hard Negative Mining}{37}{subsection.101}%
-\contentsline {section}{\numberline {4.4}LLM Augmentation}{38}{section.102}%
-\contentsline {subsection}{\numberline {4.4.1}Noise Taxonomy Design}{39}{subsection.103}%
-\contentsline {subsection}{\numberline {4.4.2}LLM Augmentation Example}{39}{subsection.105}%
-\contentsline {section}{\numberline {4.5}Candidate Retrieval}{42}{section.107}%
-\contentsline {section}{\numberline {4.6}Cross Encoder training}{42}{section.108}%
-\contentsline {section}{\numberline {4.7}Model Harness}{42}{section.109}%
-\contentsline {chapter}{\numberline {5}Evaluation}{45}{chapter.110}%
-\contentsline {section}{\numberline {5.1}Evaluation Setup and Metrics}{45}{section.111}%
-\contentsline {subsection}{\numberline {5.1.1}Bi-Encoder Evaluation}{45}{subsection.112}%
-\contentsline {subsection}{\numberline {5.1.2}Cross-Encoder Evaluation}{46}{subsection.113}%
-\contentsline {section}{\numberline {5.2}Entity Linking Performance}{47}{section.114}%
-\contentsline {section}{\numberline {5.3}Comparative performance evaluation}{47}{section.115}%
-\contentsline {section}{\numberline {5.4}Error Analysis}{47}{section.116}%
-\contentsline {section}{\numberline {5.5}Discussion}{47}{section.117}%
+\contentsline {section}{\numberline {2.6}Associative Memory}{10}{section.26}%
+\contentsline {section}{\numberline {2.7}Transformers and Attention Mechanisms}{11}{section.27}%
+\contentsline {subsection}{\numberline {2.7.1}Limitations of Attention-Based Associative Retrieval}{11}{subsection.28}%
+\contentsline {section}{\numberline {2.8}Bi-Encoder Models}{12}{section.29}%
+\contentsline {subsection}{\numberline {2.8.1}Architecture of a Bi-Encoder}{12}{subsection.30}%
+\contentsline {subsection}{\numberline {2.8.2}Bi-Encoders in Two-Stage Retrieval Systems}{13}{subsection.34}%
+\contentsline {subsection}{\numberline {2.8.3}Relationship to Attention-Based Memory Models}{14}{subsection.35}%
+\contentsline {section}{\numberline {2.9}Cross-Encoder Models}{14}{section.36}%
+\contentsline {subsection}{\numberline {2.9.1}Transformer-Based Interaction Modeling}{15}{subsection.37}%
+\contentsline {subsection}{\numberline {2.9.2}Advantages and Limitations}{15}{subsection.40}%
+\contentsline {subsection}{\numberline {2.9.3}Cross-Encoders and Attention-Based Retrieval}{16}{subsection.41}%
+\contentsline {subsection}{\numberline {2.9.4}Role in Compliance-Oriented Retrieval Systems}{16}{subsection.42}%
+\contentsline {chapter}{\numberline {3}Research and Artifact Design}{19}{chapter.45}%
+\contentsline {section}{\numberline {3.1}Methodology: Design Science Research}{19}{section.46}%
+\contentsline {section}{\numberline {3.2}Artifact Requirements}{20}{section.53}%
+\contentsline {section}{\numberline {3.3}Proposed Framework}{21}{section.54}%
+\contentsline {subsection}{\numberline {3.3.1}Data Preparation}{23}{subsection.60}%
+\contentsline {subsection}{\numberline {3.3.2}Construction of the Regulatory Reference Dataset}{23}{subsection.61}%
+\contentsline {subsection}{\numberline {3.3.3}Embedding Model Development}{23}{subsection.62}%
+\contentsline {subsection}{\numberline {3.3.4}Domain Noise Characterization}{24}{subsection.63}%
+\contentsline {subsection}{\numberline {3.3.5}LLM-Based Data Augmentation}{24}{subsection.64}%
+\contentsline {subsection}{\numberline {3.3.6}Cross-Encoder Development}{25}{subsection.65}%
+\contentsline {subsection}{\numberline {3.3.7}Confidence-Based Human Oversight}{25}{subsection.66}%
+\contentsline {section}{\numberline {3.4}Design Decisions}{26}{section.67}%
+\contentsline {subsection}{\numberline {3.4.1}Adoption of a Two-Stage Retrieval Architecture}{26}{subsection.68}%
+\contentsline {subsection}{\numberline {3.4.2}Dense Semantic Retrieval}{26}{subsection.69}%
+\contentsline {subsection}{\numberline {3.4.3}Iterative Hard Negative Mining}{26}{subsection.70}%
+\contentsline {subsection}{\numberline {3.4.4}Noise-Aware Data Augmentation}{27}{subsection.71}%
+\contentsline {subsection}{\numberline {3.4.5}Confidence-Based Decision Support}{27}{subsection.72}%
+\contentsline {chapter}{\numberline {4}Implementation}{29}{chapter.73}%
+\contentsline {section}{\numberline {4.1}System Architecture}{29}{section.74}%
+\contentsline {subsection}{\numberline {4.1.1}Model Components}{30}{subsection.79}%
+\contentsline {subsection}{\numberline {4.1.2}Experimental Environment}{30}{subsection.80}%
+\contentsline {subsection}{\numberline {4.1.3}Model Selection and Configuration}{30}{subsection.82}%
+\contentsline {section}{\numberline {4.2}Data Preparation and Feature Selection}{31}{section.84}%
+\contentsline {subsection}{\numberline {4.2.1}Feature Selection}{31}{subsection.85}%
+\contentsline {section}{\numberline {4.3}Regulatory Reference Dataset Construction}{32}{section.87}%
+\contentsline {subsection}{\numberline {4.3.1}Heuristic Data Labelling}{32}{subsection.88}%
+\contentsline {subsection}{\numberline {4.3.2}Dataset Partitioning}{34}{subsection.91}%
+\contentsline {subsection}{\numberline {4.3.3}Pair Transformation}{34}{subsection.93}%
+\contentsline {section}{\numberline {4.4}Bi-Encoder Training}{36}{section.95}%
+\contentsline {subsection}{\numberline {4.4.1}Hard Negative Mining}{37}{subsection.97}%
+\contentsline {section}{\numberline {4.5}LLM Augmentation}{38}{section.98}%
+\contentsline {subsection}{\numberline {4.5.1}Noise Taxonomy Design}{39}{subsection.99}%
+\contentsline {subsection}{\numberline {4.5.2}LLM Augmentation Example}{39}{subsection.101}%
+\contentsline {section}{\numberline {4.6}Candidate Retrieval}{42}{section.103}%
+\contentsline {section}{\numberline {4.7}Cross-Encoder Training}{42}{section.104}%
+\contentsline {chapter}{\numberline {5}Evaluation}{45}{chapter.106}%
+\contentsline {section}{\numberline {5.1}Evaluation Setup and Metrics}{45}{section.107}%
+\contentsline {subsection}{\numberline {5.1.1}Bi-Encoder Evaluation}{45}{subsection.108}%
+\contentsline {subsection}{\numberline {5.1.2}Cross-Encoder Evaluation}{46}{subsection.109}%
+\contentsline {subsection}{\numberline {5.1.3}End-to-End Entity Linking Evaluation}{46}{subsection.111}%
+\contentsline {subsection}{\numberline {5.1.4}Entity Linking Performance}{47}{subsection.112}%
+\contentsline {section}{\numberline {5.2}Comparative Performance Evaluation}{48}{section.114}%
+\contentsline {subsection}{\numberline {5.2.1}Bi-Encoder Comparison}{48}{subsection.115}%
+\contentsline {subsection}{\numberline {5.2.2}Cross-Encoder Comparison}{49}{subsection.118}%
+\contentsline {section}{\numberline {5.3}Error Analysis}{50}{section.120}%
+\contentsline {subsection}{\numberline {5.3.1}Limitations of Heuristic Labelling and Data Augmentation}{50}{subsection.121}%
+\contentsline {subsection}{\numberline {5.3.2}Retrieval and Reranking Errors}{50}{subsection.122}%
+\contentsline {subsection}{\numberline {5.3.3}Insufficient Reference Information}{51}{subsection.123}%
+\contentsline {subsection}{\numberline {5.3.4}Cross-Jurisdictional References}{51}{subsection.124}%
+\contentsline {subsection}{\numberline {5.3.5}Similar and Versioned Regulatory Entities}{51}{subsection.125}%
+\contentsline {subsection}{\numberline {5.3.6}Terminology and Naming Variations}{51}{subsection.126}%
+\contentsline {subsection}{\numberline {5.3.7}Jurisdiction-Specific Legal Terminology}{52}{subsection.127}%
+\contentsline {section}{\numberline {5.4}Discussion}{52}{section.128}%
+\contentsline {section}{\numberline {5.5}Future Work}{53}{section.129}%
 \def \@chapapp {\appendixname }
-\contentsline {chapter}{\nonumberline List of Figures}{49}{chapter*.118}%
-\contentsline {chapter}{\nonumberline List of Tables}{51}{chapter*.119}%
-\contentsline {chapter}{\nonumberline {Listings}}{53}{chapter*.120}%
-\contentsline {chapter}{\nonumberline {Bibliography}}{55}{chapter*.121}%
-\contentsline {chapter}{\nonumberline Eigenständigkeitserklärung}{57}{chapter*.122}%
+\contentsline {chapter}{\nonumberline List of Figures}{55}{chapter*.130}%
+\contentsline {chapter}{\nonumberline List of Tables}{57}{chapter*.131}%
+\contentsline {chapter}{\nonumberline {Listings}}{59}{chapter*.132}%
+\contentsline {chapter}{\nonumberline {Bibliography}}{61}{chapter*.133}%
+\contentsline {chapter}{\nonumberline Eigenständigkeitserklärung}{63}{chapter*.134}%
+\contentsline {chapter}{\nonumberline Erklärung zum Einsatz von KI-Tools}{65}{chapter*.135}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

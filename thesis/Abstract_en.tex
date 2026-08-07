@@ -9,15 +9,15 @@
 
 \section*{Abstract}
 
-This Master Thesis describes the implementation of a solution to control and monitor electric consumers via the Internet. Needs of this solution are defined by use of the Kano model. Existing technologies and standards are benchmarked by means of a cost-utility analysis. The solution that scores the highest value of benefit will be implemented typically.
+Regulatory compliance processes require the accurate identification of relationships between references to legal documents and their corresponding regulatory entities. However, regulatory references are frequently expressed using inconsistent terminology, abbreviated names, incomplete identifiers, and varying contextual descriptions, making automated entity linking a challenging retrieval task. Traditional rule-based approaches often struggle to generalize across these variations, motivating the development of robust semantic retrieval methods.
 
-A Zigbit Module forms the basis of the hardware. It bundles an AVR microcontroller and an IEEE 802.15.4 transceiver. Together with a self-dimensioned capacitive power supply it is mounted in a socket housing.
+This thesis presents a two-stage retrieval architecture for regulatory document entity linking based on dense semantic retrieval and neural reranking. The proposed approach uses a fine-tuned bi-encoder model to generate candidate regulatory entities from reference descriptions, followed by a cross-encoder model to rerank retrieved candidates and determine the most likely entity match. The architecture is motivated by associative memory principles underlying modern attention-based retrieval mechanisms, where learned representations enable the retrieval of semantically related information from high-dimensional representation spaces.
 
-To be future-proof, the IPv6 protocol is used. The 6LoWPAN protocol handles the adaptation layer. Contiki is used as operating system. It is delivered with a ready-to-use web server application which is customized for the own purposes. The IEC 60870-5-104 protocol is implemented from scratch. It is based on TCP/IP and is used in the field of energy management systems. It is particularly suitable for automated access.
+To improve robustness against variations in regulatory references, a domain-specific noise taxonomy was developed to characterize common reference transformations found in regulatory documents. This taxonomy was used to guide large language model (LLM)-based data augmentation, generating additional training examples while preserving the original reference-entity association. The augmented dataset improves model adaptation to realistic variations in regulatory terminology while preventing unsupported external information from being introduced into the training process.
 
-Via a public address given by IPv6 tunnel broker SixXS the solution is accessible worldwide. The electric consumer can be switched on and off by the means of a web browser or an energy management system.
+The proposed system was evaluated on a held-out dataset containing 725 regulatory reference instances. The complete entity linking pipeline achieved a Recall@50 of 90.76\%, Accuracy@1 of 85.38\%, MRR@50 of 87.45\%, and NDCG@50 of 88.26\%. These results demonstrate that the proposed architecture can effectively resolve regulatory references despite substantial variation in naming conventions and contextual descriptions.
 
-The needs according to the Kano model are almost completeley achieved. It is possible to implement a solution consisting of a web server and IEC 60870-5-104 application in ressource constraint environments. Possible applications for such a solution are in the field of home automation and smart grid.
+The findings demonstrate that combining dense semantic retrieval, neural reranking, and controlled LLM-based augmentation provides a robust approach for regulatory entity linking. The developed artifact contributes a practical retrieval framework for compliance-oriented applications and highlights the potential of attention-based representation learning approaches for improving automated regulatory knowledge processing.
 
 
 %% eof

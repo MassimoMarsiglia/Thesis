@@ -1,9 +1,11 @@
 \section{Structure of the Thesis}
 
-The remainder of this thesis is structured as follows.
+This thesis is structured into five main chapters. Chapter~1 introduces the research background and problem domain, defines the research problem and gap, presents the research question and contributions, and provides an overview of the thesis structure.
 
-Chapter 2 introduces the theoretical background and discusses relevant concepts.
-Chapter 3 describes the methodology and implementation of the proposed approach.
-Chapter 4 presents the evaluation and discusses the results.
-Finally, Chapter 5 summarizes the findings and provides an outlook for future
-work.
+Chapter~2 establishes the theoretical foundations of the research. It introduces representation spaces and representation learning, discusses embeddings and retrieval in natural language processing, and provides the theoretical background for bi-encoder and cross-encoder architectures. The chapter also discusses Hopfield networks, associative memory, and different forms of knowledge relevant to regulatory compliance.
+
+Chapter~3 describes the research methodology and artifact design. It introduces the Design Science Research methodology, derives the requirements for the proposed artifact, and presents the overall retrieval framework. The chapter further discusses the major design decisions underlying the framework, including the two-stage retrieval architecture, dense semantic retrieval, hard negative mining, noise-aware augmentation, and confidence-based decision support.
+
+Chapter~4 describes the implementation of the proposed artifact. It presents the system architecture, experimental environment, and model configurations, followed by the data preparation and construction of the regulatory reference dataset. The chapter then describes bi-encoder training, hard negative mining, LLM-based noise-aware augmentation, candidate retrieval, cross-encoder training, and the resulting model harness.
+
+Chapter~5 evaluates the developed artifact. It first defines the evaluation setup and metrics for the individual retrieval components and the complete entity linking pipeline. The chapter then presents the resulting entity linking performance and comparative experiments, followed by an analysis of retrieval errors and limitations. Finally, the findings are discussed in relation to the research objectives, and potential directions for future work are presented.

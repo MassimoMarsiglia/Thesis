@@ -1,13 +1,13 @@
-\subsection{Data Preparation and Feature Selection}
+\section{Data Preparation and Feature Selection}
 
-The dataset used in this work was provided by Fairfield \& Archer, a partner organization specializing in regulatory compliance solutions. The dataset consists of structured regulatory information extracted from compliance documents and was provided for research and evaluation purposes.
+The dataset used in this work was provided by a partner company specializing in AI-driven regulatory compliance solutions. The dataset contains structured regulatory information derived from documents available through EUR-Lex. It consists of document metadata as well as extracted features describing regulatory documents and their relationships, such as related document references and other regulatory attributes. The dataset was provided for research and evaluation purposes.
 
-The provided dataset serves as the initial input for the regulatory entity linking framework.
+The provided dataset serves as the initial input for the regulatory entity linking framework, providing the regulatory references and corresponding regulatory document entities required to construct the linking pairs used throughout this work.
 
 \subsection{Feature Selection}
 
 For the regulatory entity linking task, only features relevant to identifying relationships 
-between regulatory references and regulatory entities are retained.
+between regulatory references and regulatory entities are retained. Around 8000 regulatory document entities and 50000 regulatory document references were extracted.
 
 The selected features represent the information required to identify relationships between regulatory references and their corresponding entities. The main features used within the framework are described below.
 
@@ -25,13 +25,13 @@ the linking process.
 \hline
 \textbf{Feature} & \textbf{Description} \\
 \hline
-Source Build ID & Identifier of the source document or dataset entry. \\
-Reference Title & The title of the document being refered to, as \\ 
-& defined in the reference \\
-Description & Description, that describes how the source document \\
-& is related to the document being referred to. \\
-Relationship Type & The type of relationship the source document has to \\
-& the document being referred to.\\
+Source Build ID & Identifier of the source regulatory document containing the extracted reference. \\
+
+Reference Title & Title of the referenced regulatory document as provided in the extracted reference. \\
+
+Description & Textual description describing the relationship between the source document and the referenced regulatory entity. \\
+
+Relationship Type & Type of relationship between the source document and the referenced regulatory entity. \\
 \hline
 \end{tabular}
 

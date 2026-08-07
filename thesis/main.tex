@@ -97,29 +97,29 @@ pdfproducer = {pdflatex}
 % 	Befehl: makeindex Thesis.nlo -s nomencl.ist -o Thesis.nls
 %
 \input{references/acronyms.tex}
-\cleardoublepage
+
 \markboth{\nomname}{\nomname}
 \printnomenclature
 
 %% Abbildungsverzeichnis
-\listoffigures \clearpage
+\listoffigures
 
 %% Tabellenverzeichnis
-\listoftables \clearpage
+\listoftables 
 
 %% Quelltextverzeichnis
-\lstlistoflistings \clearpage
+\lstlistoflistings 
 
 %% Stichwortverzeichnis
 %	Befehl: makeindex Thesis
 %
-\printindex \clearpage
+\printindex 
 
 %% Literaturverzeichnis
 %	Befehl: biber Thesis
 %
 \printbibliography[heading=bibintoc, title={\babel{Literaturverzeichnis}{Bibliography}}]
-\clearpage
+
 %Literaturverzeichnisse getrennt nach Stichwort
 %\printbibliography[heading=bibintoc, keyword={book}, title={Literaturverzeichnis}]\clearpage
 %\printbibliography[heading=bibintoc, keyword={online}, title={Onlinequellen}]\clearpage
@@ -127,5 +127,8 @@ pdfproducer = {pdflatex}
 
 %% Erklärung zur Eigenständigkeit
 \input{Eigenstaendigkeitserklaerung}
+
+%% Erklärung zum Einsatz von KI-Tools
+\input{ki_einsatzerklaerung}
 
 \end{document}

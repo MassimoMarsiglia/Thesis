@@ -14,6 +14,78 @@ Modern Hopfield networks instead maintain memories as an external set of represe
 
 This property makes modern Hopfield networks particularly relevant for adaptive machine learning systems, where the stored knowledge may change over time while the core model remains unchanged.
 
-\subsection{Summary}
+\section{Associative Memory}
 
-Classical Hopfield networks introduced the concept of associative memory but were limited by discrete memory representations and restricted storage capacity. Modern Hopfield networks extend this concept by leveraging continuous representation spaces and external memory storage, enabling scalable and dynamically updateable associative memory. These properties provide a foundation for machine learning systems that separate the process of retrieving information from the storage of memories.
+Associative memory refers to the ability of a system to store and retrieve information based on relationships between patterns. In artificial intelligence (AI), associative memory models are designed to recover stored information from partial or incomplete inputs by learning associations between representations. Early approaches, such as Hopfield Networks, modelled memories as stable states within interconnected networks, where the structure of connections influenced memory storage and retrieval \cite{hopfield1982}. Modern Hopfield Networks (MHNs) build upon this foundation by introducing high-dimensional representations and attention-based retrieval mechanisms, allowing associative memory models to achieve greater scalability and improved retrieval capabilities \cite{ramsauer2021hopfield}. The concept of associative memory is also observed in biological neural systems, where it supports processes such as learning, recognition, and recall.
+
+\section{Transformers and Attention Mechanisms}
+
+The Transformer architecture introduced a shift from recurrent sequence modelling
+towards attention-based representation learning. Unlike recurrent architectures,
+Transformers allow each input representation to directly attend to other
+representations within a sequence, enabling the model to dynamically capture
+relationships between different elements~\cite{vaswani2017attention}.
+
+The core operation of Transformers is the attention mechanism:
+
+\[
+Attention(Q,K,V)=
+\operatorname{softmax}
+\left(
+\frac{QK^T}{\sqrt{d_k}}
+\right)V
+\]
+
+where queries ($Q$) retrieve relevant information from keys ($K$) and combine
+the corresponding values ($V$). This mechanism allows models to retrieve
+relevant representations based on learned similarity relationships.
+
+This behaviour is closely related to Modern Hopfield Networks. Ramsauer et al.
+showed that the update rule of Modern Hopfield Networks can be expressed as an
+attention operation~\cite{ramsauer2021hopfield}. The associative retrieval
+process of an MHN can be represented as:
+
+\[
+\boldsymbol{\xi}^{new}
+=
+X\operatorname{softmax}
+(\beta X^T\boldsymbol{\xi})
+\]
+
+where the query representation retrieves relevant stored patterns from a
+continuous memory space. This formulation is equivalent to the attention
+operation, demonstrating that attention mechanisms can be interpreted as a form
+of scalable associative memory retrieval.
+
+Due to the extensive ecosystem and practical success of transformer-based
+architectures, this thesis focuses on transformer models rather than standalone
+Modern Hopfield Networks. However, the retrieval behaviour of these models is
+analysed from the perspective of associative memory. Transformer-based
+bi-encoders and cross-encoders can therefore be viewed as practical
+implementations of associative retrieval, where representations are either
+retrieved through embedding similarity or compared through direct attention-based
+interaction.
+
+\subsection{Limitations of Attention-Based Associative Retrieval}
+
+Although attention mechanisms provide an effective method for associative
+retrieval, they introduce computational challenges when applied to large-scale
+datasets. The standard self-attention operation requires computing pairwise
+similarities between input representations, resulting in a computational
+complexity of $O(n^2)$ with respect to the sequence length. This quadratic
+scaling limits the applicability of attention mechanisms for very long inputs or
+large retrieval collections.
+
+Similarly, while Modern Hopfield Networks provide a scalable formulation of
+associative memory compared to classical Hopfield Networks, retrieval still
+requires computing similarities between queries and stored representations.
+When the number of stored patterns becomes large, the cost of comparing against
+the entire memory space becomes computationally expensive.
+
+These limitations motivate the use of efficient retrieval architectures that
+reduce the number of comparisons required during inference. In this thesis, the
+two-stage retrieval architecture addresses this challenge by using a
+bi-encoder to efficiently retrieve a limited set of candidate entities from a
+large regulatory corpus, followed by a cross-encoder that performs more
+computationally expensive attention-based interaction modelling on the reduced
+candidate set.

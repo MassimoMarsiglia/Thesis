@@ -1,1 +1,74 @@
-\section{Comparative performance evaluation}
+\section{Comparative Performance Evaluation}
+
+To evaluate the impact of the proposed training methodology, the performance of the entity linking models was compared across different training configurations. The comparison investigates the effect of supervised fine-tuning, data augmentation, and the complete training pipeline on the ability of the model to retrieve and rank regulatory entities.
+
+The baseline configuration represents the pretrained model without task-specific adaptation. This provides an indication of the performance obtained from general semantic representations before exposure to regulatory-specific data. The supervised configuration evaluates the impact of training on the heuristically labelled dataset, while the augmented configuration measures the additional contribution of the generated training examples. Finally, the complete configuration represents the proposed approach using all available training components.
+
+\subsection{Bi-Encoder Comparison}
+
+Table~\ref{tab:biencoder_comparison} presents the retrieval performance of the bi-encoder under different training configurations on the test set of our non augmented eval dataset.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of bi-encoder retrieval performance across training configurations.}
+\label{tab:biencoder_comparison}
+
+\begin{tabular}{lccc}
+\hline
+\textbf{Training Configuration} & \textbf{Recall@1} & \textbf{Recall@5} & \textbf{Recall@10} \\
+\hline
+Pretrained Model & 0.278 & 0.54 & 0.611 \\
+Heuristic Labels Only & 0.89 & 0.944 & 0.96 \\
+Heuristic Labels + Augmentation & 0.87 & 0.937 & 0.93 \\
+\hline
+\end{tabular}
+\end{table}
+
+Table~\ref{tab:biencoder_comparison2} presents the retrieval performance of the bi-encoder under different training configurations on the augmented eval dataset.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of bi-encoder retrieval performance across training configurations.}
+\label{tab:biencoder_comparison2}
+
+\begin{tabular}{lccc}
+\hline
+\textbf{Training Configuration} & \textbf{Recall@1} & \textbf{Recall@5} & \textbf{Recall@10} \\
+\hline
+Pretrained Model & 0.259 & 0.391 & 0.457 \\
+Heuristic Labels Only & 0.438 & 0.56 & 0.62 \\
+Heuristic Labels + Augmentation & 0.71 & 0.899 & 0.928 \\
+\hline
+\end{tabular}
+\end{table}
+
+
+The results demonstrate the effect of task-specific adaptation on candidate retrieval performance. Improvements over the pretrained baseline indicate that exposure to regulatory-specific examples allows the model to learn representations better aligned with the entity linking task. Furthermore, differences between the heuristic-only and augmented configurations provide insight into whether the additional linguistic variation introduced through augmentation improves the generalization capability of the retriever.
+
+
+\subsection{Cross-Encoder Comparison}
+
+The cross-encoder is evaluated as a linking model, where the objective is to correctly select the highest-scoring entity from the retrieved candidate set. Therefore, the primary evaluation criterion is whether the correct entity is ranked at the first position.
+
+The model was only evaluated with a candidate set obtained from the bi-encoder trained with the llm augmented dataset.
+
+Table~\ref{tab:crossencoder_comparison} presents the top-1 linking accuracy across training configurations.
+
+\begin{table}[H]
+\centering
+\caption{Comparison of cross-encoder top-1 linking performance.}
+\label{tab:crossencoder_comparison}
+
+\begin{tabular}{lc}
+\hline
+\textbf{Training Configuration} & \textbf{NDCG@1} \\
+\hline
+Pretrained Model & 0.856 \\
+Trained Model & 0.975 \\
+\hline
+\end{tabular}
+\end{table}
+
+The results indicate the ability of each training configuration to improve the cross-encoder's ability to distinguish between relevant and non-relevant regulatory entities. Since inference selects the candidate with the highest predicted relevance score, achieving a correct top-ranked prediction is the primary objective of the reranking component.
+
+The comparison across evaluation subsets provides insight into the conditions under which the system performs reliably and where limitations remain. In particular, reduced performance on ambiguous or incomplete references highlights the dependency of entity linking accuracy on the availability of sufficient contextual information.

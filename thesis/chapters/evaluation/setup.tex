@@ -28,13 +28,25 @@ where $rank_i$ represents the position of the correct regulatory entity within t
 
 \subsection{Cross-Encoder Evaluation}
 
-The cross-encoder is evaluated as a reranking model that receives a regulatory reference together with retrieved candidate entities and predicts their relevance. Unlike the bi-encoder, the objective of the cross-encoder is not candidate discovery but accurate ranking of a smaller candidate set.
+The cross-encoder is evaluated as a regulatory entity linking model. Given a regulatory reference and a set of candidate entities retrieved by the bi-encoder, the cross-encoder assigns a relevance score to each candidate pair. Unlike the bi-encoder, whose objective is candidate retrieval, the cross-encoder is responsible for selecting the most relevant entity from the retrieved candidate set.
 
-The primary metric used for cross-encoder evaluation is Mean Reciprocal Rank (MRR). MRR is suitable for evaluating reranking performance because the objective of the cross-encoder is to assign the highest relevance score to the correct regulatory entity. A higher MRR indicates that the correct entity consistently appears closer to the top of the ranked candidate list.
+The evaluation focuses on whether the cross-encoder assigns the highest score to the correct entity. During inference, the candidate with the highest cross-encoder score is selected as the predicted linked entity:
 
-Recall@K is additionally reported after reranking to measure whether the correct entity remains within the final ranked candidate set. Although candidate recall is primarily determined by the bi-encoder stage, evaluating Recall@K after reranking provides insight into whether the cross-encoder incorrectly demotes relevant candidates.
+\begin{equation}
+e^* = \arg\max_{e \in C} s(r,e)
+\end{equation}
 
-For binary relevance evaluation, precision, recall, and F1-score are additionally used to evaluate the classification behaviour of the cross-encoder. These metrics measure how effectively the model distinguishes relevant reference-entity pairs from incorrect candidate pairs.
+where $r$ represents the regulatory reference, $C$ is the retrieved candidate set, and $s(r,e)$ denotes the relevance score assigned by the cross-encoder to candidate $e$.
+
+The primary evaluation metric is Accuracy@1 (Top-1 accuracy). This metric measures the proportion of examples where the correct regulatory entity receives the highest cross-encoder score among all retrieved candidates. Since inference selects only the highest-scoring candidate, Accuracy@1 directly reflects the final decision behaviour of the cross-encoder during entity linking.
+
+\subsection{End-to-End Entity Linking Evaluation}
+
+The complete entity linking pipeline is evaluated by measuring whether the final predicted entity matches the ground-truth regulatory entity. Unlike the cross-encoder evaluation, which only measures the ranking decision among retrieved candidates, the end-to-end evaluation captures the combined performance of candidate retrieval and reranking.
+
+The pipeline prediction is obtained by first retrieving candidate entities using the bi-encoder and subsequently selecting the highest-scoring candidate using the cross-encoder. The final prediction is therefore considered correct only if the retrieved candidate set contains the correct entity and the cross-encoder selects it as the final output.
+
+To evaluate the overall linking performance, precision, recall, and F1-score are reported. These metrics measure the ability of the complete system to correctly identify relevant regulatory entities while accounting for incorrect and missed links.
 
 \[
 Precision = \frac{TP}{TP+FP}
@@ -48,4 +60,4 @@ Recall = \frac{TP}{TP+FN}
 F1 = 2 \cdot \frac{Precision \cdot Recall}{Precision + Recall}
 \]
 
-where $TP$, $FP$, and $FN$ represent true positive, false positive, and false negative predictions respectively.
+where $TP$, $FP$, and $FN$ denote true positive, false positive, and false negative predictions, respectively.
