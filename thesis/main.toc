@@ -84,10 +84,12 @@
 \contentsline {section}{\numberline {5.4}Discussion}{52}{section.128}%
 \contentsline {section}{\numberline {5.5}Future Work}{53}{section.129}%
 \def \@chapapp {\appendixname }
-\contentsline {chapter}{\nonumberline List of Figures}{55}{chapter*.130}%
-\contentsline {chapter}{\nonumberline List of Tables}{57}{chapter*.131}%
-\contentsline {chapter}{\nonumberline {Listings}}{59}{chapter*.132}%
-\contentsline {chapter}{\nonumberline {Bibliography}}{61}{chapter*.133}%
-\contentsline {chapter}{\nonumberline Eigenständigkeitserklärung}{63}{chapter*.134}%
+\contentsline {chapter}{\nonumberline Appendix}{55}{chapter*.130}%
+\contentsline {chapter}{\nonumberline List of Figures}{57}{chapter*.131}%
+\contentsline {chapter}{\nonumberline List of Tables}{59}{chapter*.132}%
+\contentsline {chapter}{\nonumberline {Listings}}{61}{chapter*.133}%
+\contentsline {chapter}{\nonumberline {Bibliography}}{63}{chapter*.134}%
 \contentsline {chapter}{\nonumberline Erklärung zum Einsatz von KI-Tools}{65}{chapter*.135}%
+\contentsline {chapter}{\nonumberline Eigenständigkeitserklärung}{67}{chapter*.136}%
+\contentsline {chapter}{\nonumberline Sperrvermerk}{69}{chapter*.137}%
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

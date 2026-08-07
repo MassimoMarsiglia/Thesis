@@ -1,12 +1,12 @@
 \section{Bi-Encoder Training}
 
-Following the dataset creation, the bi-encoder component is fine-tuned on the constructed regulatory reference dataset to learn domain-specific semantic representations for regulatory reference retrieval. The model is fully fine-tuned, allowing the pretrained embedding parameters to be adapted directly to the regulatory entity linking task.
+Following the dataset creation, the bi-encoder component is fine-tuned on the constructed regulatory reference dataset to learn domain-specific semantic representations for regulatory reference retrieval. The model is fully fine-tuned, allowing the pretrained embedding parameters to be adapted directly to the regulatory document entity linking task.
 
 The implementation uses the SentenceTransformers library, which provides training utilities for dense retrieval models and retrieval-oriented evaluation methods \cite{reimers2019sentence}. The model is optimized using Cached Multiple Negatives Ranking Loss (CachedMNRL). This loss function learns representations from positive reference-entity pairs by treating other examples within the batch as implicit negative examples. During training, the model maximizes the similarity between matching reference-entity pairs while minimizing similarity with non-matching pairs within the batch.
 
 The effectiveness of Multiple Negatives Ranking Loss is strongly influenced by the number of available in-batch negatives. Larger effective batch sizes provide more negative examples, increasing the difficulty of the retrieval task and encouraging the model to learn more discriminative embeddings. To support larger effective batch sizes under limited GPU memory, CachedMNRL stores representations from previous mini-batches, allowing additional negatives to be incorporated without requiring all examples to be processed simultaneously \cite{henderson2017efficient}.
 
-To ensure meaningful negative examples, a no-duplicate batch sampler is used. This prevents multiple examples belonging to the same regulatory entity from appearing within a single batch, ensuring that in-batch negatives represent distinct candidate entities.
+To ensure meaningful negative examples, a no-duplicate batch sampler is used. This prevents multiple examples belonging to the same regulatory document entity from appearing within a single batch, ensuring that in-batch negatives represent distinct candidate entities.
 
 The model is trained using mixed-precision BF16 computation. The maximum sequence length is set to 512 tokens to accommodate longer regulatory references and contextual information while maintaining computational efficiency.
 
@@ -49,7 +49,7 @@ During training, model performance is monitored using the SentenceTransformers I
 \texttt{eval\_validation-document-linking\_cosine\_mrr@10}
 \]
 
-which measures the mean reciprocal rank of the correct regulatory entity among the top-$k$ retrieved candidates using cosine similarity.
+which measures the mean reciprocal rank of the correct regulatory document entity among the top-$k$ retrieved candidates using cosine similarity.
 
 The validation metric is used only for monitoring training progress and model selection. Final performance evaluation is conducted separately using an independent test dataset outside of the training loop to provide an unbiased assessment of retrieval performance on unseen regulatory entities.
 

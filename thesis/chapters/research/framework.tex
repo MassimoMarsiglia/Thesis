@@ -1,6 +1,6 @@
 \section{Proposed Framework}
 
-This section introduces the proposed framework for regulatory entity linking. The framework integrates transformer-based dense retrieval, cross-encoder reranking, and large language model (LLM)-based data augmentation to improve the identification and resolution of regulatory references within complex regulatory documents.
+This section introduces the proposed framework for regulatory document entity linking. The framework integrates transformer-based dense retrieval, cross-encoder reranking, and large language model (LLM)-based data augmentation to improve the identification and resolution of regulatory references within complex regulatory documents.
 
 The proposed framework consists of four primary components:
 
@@ -8,7 +8,7 @@ The proposed framework consists of four primary components:
     \item Data preparation and construction of a regulatory reference dataset
     \item Development of dense retrieval representations using a bi-encoder architecture
     \item Domain adaptation through hard negative mining and noise-aware data augmentation
-    \item Two-stage regulatory entity linking through candidate retrieval and semantic reranking
+    \item Two-stage regulatory document entity linking through candidate retrieval and semantic reranking
 \end{enumerate}
 
 An overview of the final inference architecture is presented in Figure~\ref{fig:model_architecture}. The following sections describe the individual components of the proposed framework.
@@ -73,7 +73,7 @@ An overview of the final inference architecture is presented in Figure~\ref{fig:
 
 \end{tikzpicture}
 
-\caption{Conceptual overview of the proposed regulatory entity linking framework.}
+\caption{Conceptual overview of the proposed regulatory document entity linking framework.}
 \label{fig:model_architecture}
 
 \end{figure}
@@ -140,7 +140,7 @@ Following candidate generation by the bi-encoder, the cross-encoder jointly proc
 
 The framework further incorporates hard negative mining for cross-encoder optimization. Challenging candidates retrieved by the bi-encoder are used to improve the model's ability to differentiate between highly similar regulatory entities.
 
-The combination of efficient candidate generation and interaction-based reranking provides a scalable approach for regulatory entity linking while maintaining high semantic precision.
+The combination of efficient candidate generation and interaction-based reranking provides a scalable approach for regulatory document entity linking while maintaining high semantic precision.
 
 \subsection{Confidence-Based Human Oversight}
 

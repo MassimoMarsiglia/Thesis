@@ -1,6 +1,6 @@
 \section{Evaluation Setup and Metrics}
 
-The evaluation framework assesses the performance of the implemented regulatory entity linking pipeline. Evaluation is performed using the held-out test partition created during dataset construction, which contains regulatory entities not observed during training.
+The evaluation framework assesses the performance of the implemented regulatory document entity linking pipeline. Evaluation is performed using the held-out test partition created during dataset construction, which contains regulatory entities not observed during training.
 
 The evaluation is divided according to the individual components of the retrieval pipeline. The bi-encoder is evaluated based on its ability to retrieve relevant regulatory entities, while the cross-encoder is evaluated based on its ability to rerank retrieved candidates. Additionally, the complete pipeline is evaluated to measure the final entity linking performance.
 
@@ -8,15 +8,15 @@ The following sections describe the metrics used to evaluate each component.
 
 \subsection{Bi-Encoder Evaluation}
 
-The bi-encoder is evaluated as a candidate retrieval model, where its objective is to retrieve a set of relevant regulatory entities for a given regulatory reference. Since the bi-encoder is used as the first retrieval stage of the pipeline, the evaluation focuses on whether the correct regulatory entity is included within the retrieved candidate set rather than only whether it is ranked first.
+The bi-encoder is evaluated as a candidate retrieval model, where its objective is to retrieve a set of relevant regulatory entities for a given regulatory reference. Since the bi-encoder is used as the first retrieval stage of the pipeline, the evaluation focuses on whether the correct regulatory document entity is included within the retrieved candidate set rather than only whether it is ranked first.
 
-The primary metric used for evaluating the bi-encoder is Recall@K. Recall@K measures the proportion of references where the correct regulatory entity is retrieved within the top-$K$ candidates. This metric is suitable for the bi-encoder because the retrieved candidates are subsequently passed to the cross-encoder for reranking. Therefore, a successful bi-encoder should maximize the probability that the correct entity is available for the downstream reranking stage.
+The primary metric used for evaluating the bi-encoder is Recall@K. Recall@K measures the proportion of references where the correct regulatory document entity is retrieved within the top-$K$ candidates. This metric is suitable for the bi-encoder because the retrieved candidates are subsequently passed to the cross-encoder for reranking. Therefore, a successful bi-encoder should maximize the probability that the correct entity is available for the downstream reranking stage.
 
 \[
 Recall@K = \frac{1}{N}\sum_{i=1}^{N}\mathbb{1}(r_i \in C_i^K)
 \]
 
-where $N$ represents the number of evaluated references, $r_i$ represents the correct regulatory entity for reference $i$, and $C_i^K$ represents the set of top-$K$ retrieved candidates.
+where $N$ represents the number of evaluated references, $r_i$ represents the correct regulatory document entity for reference $i$, and $C_i^K$ represents the set of top-$K$ retrieved candidates.
 
 In addition to Recall@K, Mean Reciprocal Rank (MRR) is used to evaluate the ranking quality of retrieved candidates. While Recall@K only considers whether the correct entity is present within the candidate set, MRR considers its position within the ranking. This provides additional insight into whether the bi-encoder assigns higher similarity scores to correct entities.
 
@@ -24,11 +24,11 @@ In addition to Recall@K, Mean Reciprocal Rank (MRR) is used to evaluate the rank
 MRR = \frac{1}{N}\sum_{i=1}^{N}\frac{1}{rank_i}
 \]
 
-where $rank_i$ represents the position of the correct regulatory entity within the retrieved candidate ranking.
+where $rank_i$ represents the position of the correct regulatory document entity within the retrieved candidate ranking.
 
 \subsection{Cross-Encoder Evaluation}
 
-The cross-encoder is evaluated as a regulatory entity linking model. Given a regulatory reference and a set of candidate entities retrieved by the bi-encoder, the cross-encoder assigns a relevance score to each candidate pair. Unlike the bi-encoder, whose objective is candidate retrieval, the cross-encoder is responsible for selecting the most relevant entity from the retrieved candidate set.
+The cross-encoder is evaluated as a regulatory document entity linking model. Given a regulatory reference and a set of candidate entities retrieved by the bi-encoder, the cross-encoder assigns a relevance score to each candidate pair. Unlike the bi-encoder, whose objective is candidate retrieval, the cross-encoder is responsible for selecting the most relevant entity from the retrieved candidate set.
 
 The evaluation focuses on whether the cross-encoder assigns the highest score to the correct entity. During inference, the candidate with the highest cross-encoder score is selected as the predicted linked entity:
 
@@ -38,11 +38,11 @@ e^* = \arg\max_{e \in C} s(r,e)
 
 where $r$ represents the regulatory reference, $C$ is the retrieved candidate set, and $s(r,e)$ denotes the relevance score assigned by the cross-encoder to candidate $e$.
 
-The primary evaluation metric is Accuracy@1 (Top-1 accuracy). This metric measures the proportion of examples where the correct regulatory entity receives the highest cross-encoder score among all retrieved candidates. Since inference selects only the highest-scoring candidate, Accuracy@1 directly reflects the final decision behaviour of the cross-encoder during entity linking.
+The primary evaluation metric is Accuracy@1 (Top-1 accuracy). This metric measures the proportion of examples where the correct regulatory document entity receives the highest cross-encoder score among all retrieved candidates. Since inference selects only the highest-scoring candidate, Accuracy@1 directly reflects the final decision behaviour of the cross-encoder during entity linking.
 
 \subsection{End-to-End Entity Linking Evaluation}
 
-The complete entity linking pipeline is evaluated by measuring whether the final predicted entity matches the ground-truth regulatory entity. Unlike the cross-encoder evaluation, which only measures the ranking decision among retrieved candidates, the end-to-end evaluation captures the combined performance of candidate retrieval and reranking.
+The complete entity linking pipeline is evaluated by measuring whether the final predicted entity matches the ground-truth regulatory document entity. Unlike the cross-encoder evaluation, which only measures the ranking decision among retrieved candidates, the end-to-end evaluation captures the combined performance of candidate retrieval and reranking.
 
 The pipeline prediction is obtained by first retrieving candidate entities using the bi-encoder and subsequently selecting the highest-scoring candidate using the cross-encoder. The final prediction is therefore considered correct only if the retrieved candidate set contains the correct entity and the cross-encoder selects it as the final output.
 

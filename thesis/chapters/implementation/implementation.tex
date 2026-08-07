@@ -6,7 +6,7 @@
 %%
 %%
 \chapter{Implementation} 
-This chapter describes the implementation of the proposed regulatory entity linking framework. While the previous chapter introduced the conceptual design of the artifact, this chapter details the practical realization of the individual components, including data preparation, retrieval model development, augmentation strategies, and the experimental infrastructure used for evaluation. The implementation follows a two-stage retrieval architecture consisting of a dense retrieval component and a semantic reranking component. The first stage utilizes a bi-encoder model to efficiently retrieve potentially relevant regulatory entities from a large candidate space. The second stage applies a cross-encoder model to perform fine-grained relevance estimation between retrieved candidates and regulatory references.
+This chapter describes the implementation of the proposed regulatory document entity linking framework. While the previous chapter introduced the conceptual design of the artifact, this chapter details the practical realization of the individual components, including data preparation, retrieval model development, augmentation strategies, and the experimental infrastructure used for evaluation. The implementation follows a two-stage retrieval architecture consisting of a dense retrieval component and a semantic reranking component. The first stage utilizes a bi-encoder model to efficiently retrieve potentially relevant regulatory entities from a large candidate space. The second stage applies a cross-encoder model to perform fine-grained relevance estimation between retrieved candidates and regulatory references.
 
 \input{chapters/implementation/architecture.tex}
 

@@ -1,4 +1,4 @@
-# Linker — Regulatory Entity Linking System
+# Linker — Regulatory Document Entity Linking System
 
 An end-to-end system for automatically linking references in EU regulatory documents to their corresponding canonical entities. This is the codebase for the Bachelor's thesis:
 
@@ -118,14 +118,14 @@ FastAPI REST server for real-time entity linking.
 
 ## Key Dependencies
 
-| Category | Packages |
-|---|---|
+| Category      | Packages                                         |
+| ---------------| --------------------------------------------------|
 | Deep Learning | torch, transformers, peft, trl, unsloth, torchao |
-| Embeddings | sentence-transformers, faiss-gpu |
-| Retrieval | rank-bm25, datasets, evaluate |
-| Serving | fastapi, uvicorn |
-| Data | pandas, numpy, scikit-learn, duckdb |
-| LLM | openai, huggingface-hub |
+| Embeddings    | sentence-transformers, faiss-gpu                 |
+| Retrieval     | rank-bm25, datasets, evaluate                    |
+| Serving       | fastapi, uvicorn                                 |
+| Data          | pandas, numpy, scikit-learn, duckdb              |
+| LLM           | openai, huggingface-hub                          |
 
 ## Quick Start
 
@@ -151,18 +151,24 @@ pdflatex main.tex
 ```
 
 # Dataset:
-All data was provided to by the partner company Fairfield & Archer.
-The provided consisted of roughly 8000 eurolex regulatory documents + extracted features.
 Language EN
+
+All data was provided to by the partner company Fairfield & Archer.
+The provided data consisted of roughly 9000 eurolex regulatory documents + extracted features.
+
 Specific features of the dataset were used to train a regulatory document entity linking framework.
 In other words the data was used to train on
 
-the full data set is roughly 4.8GB in size the initial dataset came in form of a jsonl file which I converted to a DuckDB file.
+the full data set is roughly 4.8GB in size the initial dataset came in form of a jsonl file which was converted to a DuckDB db for furter data processing.
 
-All data was scraped from the official Eurolex website throughout 2024-2026 and was refined using an LLM (to my knowledge mainly GPT 4o bur I do not have access to the specifics)
+All data was scraped from the official Eurolex website throughout 2024-2026 and was refined using an LLM (exact details unknown)
 
-The used data has been manually vetted by Fairfield & Archer and clients.
+The used data has been manually vetted by Fairfield & Archer and their partners for validity.
+
+The dataset was provided by an industry partner for the purpose of this thesis. Due to contractual confidentiality restrictions, the raw data cannot be publicly released. Access may be granted by the data owner upon request and approval.
 
 The rights to all the used data lie with Fairfield & Archer.
 
-Given that 
+# Models:
+
+All models trained within this thesis are withheld from being released publicly. Access may be granted by the data owner upon request and approval.

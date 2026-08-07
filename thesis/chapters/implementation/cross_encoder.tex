@@ -1,8 +1,8 @@
 \section{Cross-Encoder Training}
 
-Following candidate generation and dataset augmentation, the cross-encoder component is fine-tuned as a reranking model for regulatory entity linking. Unlike the bi-encoder, which learns independent representations for references and regulatory entities, the cross-encoder jointly processes a reference-entity pair and produces a relevance score indicating whether the candidate entity matches the reference.
+Following candidate generation and dataset augmentation, the cross-encoder component is fine-tuned as a reranking model for regulatory document entity linking. Unlike the bi-encoder, which learns independent representations for references and regulatory entities, the cross-encoder jointly processes a reference-entity pair and produces a relevance score indicating whether the candidate entity matches the reference.
 
-The cross-encoder is trained using the augmented regulatory reference dataset described previously. The training examples consist of positive and negative reference-entity pairs. Positive examples represent valid reference-entity associations, including the LLM-generated reference variations that preserve the original entity association. Negative examples are obtained through candidate mining procedures and represent incorrect regulatory entity candidates.
+The cross-encoder is trained using the augmented regulatory reference dataset described previously. The training examples consist of positive and negative reference-entity pairs. Positive examples represent valid reference-entity associations, including the LLM-generated reference variations that preserve the original entity association. Negative examples are obtained through candidate mining procedures and represent incorrect regulatory document entity candidates.
 
 The implementation uses the SentenceTransformers CrossEncoder framework. The model is initialized from the pretrained \texttt{BAAI/bge-reranker-v2-m3} checkpoint and fine-tuned using Binary Cross Entropy Loss. The objective of the training process is to assign higher relevance scores to matching reference-entity pairs while assigning lower scores to incorrect candidate pairs.
 
@@ -36,8 +36,8 @@ Validation metric & NDCG@1 \\
 \end{tabular}
 \end{table}
 
-During training, model performance is monitored using the SentenceTransformers CERerankingEvaluator on the validation dataset. The evaluator measures the ranking performance of the cross-encoder by evaluating whether the correct regulatory entity is assigned the highest relevance score among retrieved candidates.
+During training, model performance is monitored using the SentenceTransformers CERerankingEvaluator on the validation dataset. The evaluator measures the ranking performance of the cross-encoder by evaluating whether the correct regulatory document entity is assigned the highest relevance score among retrieved candidates.
 
 The validation metric is used for checkpoint selection during training. Final performance evaluation is performed separately using the held-out test dataset to provide an unbiased measurement of reranking performance on unseen regulatory entities.
 
-After training, the cross-encoder is integrated into the retrieval pipeline as the final reranking component. Candidate entities are first retrieved using the trained bi-encoder and then scored by the cross-encoder. The resulting scores are used to reorder the candidate set, allowing the system to select the highest-ranked regulatory entity.
+After training, the cross-encoder is integrated into the retrieval pipeline as the final reranking component. Candidate entities are first retrieved using the trained bi-encoder and then scored by the cross-encoder. The resulting scores are used to reorder the candidate set, allowing the system to select the highest-ranked regulatory document entity.

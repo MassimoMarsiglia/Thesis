@@ -2,7 +2,7 @@
 
 LLM augmentation was used to generate alternative representations of regulatory references while preserving the original reference-entity association. The objective of this augmentation step is to increase robustness against variations in how regulatory entities are referenced in real-world compliance documents.
 
-The original reference instances were provided as input to a large language model, together with predefined noise categories, which described possible variations in regulatory references. The model was instructed to generate semantically equivalent representations while maintaining the same underlying regulatory entity association.
+The original reference instances were provided as input to a large language model, together with predefined noise categories, which described possible variations in regulatory references. The model was instructed to generate semantically equivalent representations while maintaining the same underlying regulatory document entity association.
 
 The augmentation process was designed as a controlled transformation step rather than an open-ended generation process. The LLM was guided using predefined noise categories and was restricted to modifying the provided reference representations. External regulatory information was not introduced during generation, reducing the risk of unsupported information being incorporated into the training dataset.
 
@@ -12,7 +12,7 @@ The generated variations were incorporated into the training dataset as addition
 
 A noise taxonomy was created to capture common variations in regulatory references that may negatively impact retrieval performance. During analysis of the regulatory reference dataset, two primary sources of variation were identified: variations in regulatory document titles and variations in descriptive reference information.
 
-Title variations occur when regulatory entities are referenced using shortened names, alternative naming conventions, identifiers, or modified formatting. Description variations occur when contextual information is omitted, summarized, or reformulated while preserving the underlying relationship between the reference and the regulatory entity.
+Title variations occur when regulatory entities are referenced using shortened names, alternative naming conventions, identifiers, or modified formatting. Description variations occur when contextual information is omitted, summarized, or reformulated while preserving the underlying relationship between the reference and the regulatory document entity.
 
 The taxonomy was designed to provide controlled constraints for the LLM augmentation process. Instead of generating arbitrary synthetic examples, the language model is guided to introduce realistic variations that reflect how regulatory documents are commonly referenced in compliance-oriented text.
 
@@ -55,7 +55,7 @@ Scientific basis omitted, technical specification removal, historical context re
 
 The augmentation process transforms an existing reference-entity pair into additional training examples by modifying only the reference representation while preserving the original target entity. The following example demonstrates the transformation of an existing training instance.
 
-The original reference was linked to the following regulatory entity:
+The original reference was linked to the following regulatory document entity:
 
 \begin{figure}[H]
 \centering
@@ -142,4 +142,4 @@ Document type: regulatory\_document
 
 \end{figure}
 
-The augmented example differs from the original reference only in its representation of the regulatory entity. The target entity remains unchanged, allowing the generated instance to be incorporated as an additional positive training example.
+The augmented example differs from the original reference only in its representation of the regulatory document entity. The target entity remains unchanged, allowing the generated instance to be incorporated as an additional positive training example.

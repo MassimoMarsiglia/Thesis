@@ -5,7 +5,7 @@ reference-entity pairs required for cross-encoder training. Since cross-encoders
 jointly process a reference and candidate entity, they provide more detailed
 interaction modelling but are computationally more expensive than bi-encoders.
 Therefore, the cross-encoder is trained on a reduced candidate set rather than
-the complete regulatory entity collection.
+the complete regulatory document entity collection.
 
 The trained bi-encoder encodes regulatory references and regulatory entities into
 a shared embedding space. For each reference instance, the cosine similarity
@@ -15,7 +15,7 @@ subsequent cross-encoder training.
 
 The candidate generation process uses the training portion of the augmented
 dataset to produce challenging negative examples. For each reference, the known
-linked regulatory entity is retained as the positive candidate, while highly
+linked regulatory document entity is retained as the positive candidate, while highly
 similar but incorrect entities retrieved by the bi-encoder are selected as hard
 negative candidates. These candidates represent realistic retrieval errors,
 forcing the cross-encoder to learn finer-grained distinctions between similar
@@ -23,7 +23,7 @@ regulatory entities.
 
 The generated candidate pairs are transformed into a binary classification
 dataset for cross-encoder training. Positive pairs consist of the original
-reference paired with its corresponding regulatory entity, while negative pairs
+reference paired with its corresponding regulatory document entity, while negative pairs
 consist of the same reference paired with incorrect candidates retrieved by the
 bi-encoder.
 

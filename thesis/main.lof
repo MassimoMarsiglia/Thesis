@@ -2,12 +2,14 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Conceptual overview of the proposed regulatory entity linking framework.}}{22}{figure.59}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Conceptual overview of the proposed regulatory document entity linking framework.}}{22}{figure.59}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Example transformed reference-entity training pair used as input for retrieval model training.}}{35}{figure.94}%
 \contentsline {figure}{\numberline {4.2}{\ignorespaces Example of LLM-generated augmentation while preserving the original reference-entity association.}}{41}{figure.102}%
 \addvspace {10\p@ }
 \def \@chapapp {\appendixname }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

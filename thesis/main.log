@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.8.6)  7 AUG 2026 22:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026/Arch Linux) (preloaded format=pdflatex 2026.8.6)  7 AUG 2026 22:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1207,7 +1207,7 @@ Class scrbook Info: loading recommended package `bookmark'.
 (scrbook)           `bookmarkpackage=false' before \begin{document} and
 (scrbook)           you can avoid this message adding:
 (scrbook)             \usepackage{bookmark}
-(scrbook)           before \begin{document} on input line 64.
+(scrbook)           before \begin{document} on input line 63.
  (/usr/share/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2023-12-10 v1.31 PDF bookmarks (HO)
  (/usr/share/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
@@ -1216,34 +1216,34 @@ File: bkm-pdftex.def 2023-12-10 v1.31 bookmark driver for pdfTeX and luaTeX (HO)
 )) (./main.aux (./chapters/evaluation/evaluation.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 64.
-LaTeX Font Info:    ... okay on input line 64.
-Package scrbase Info: activating english \partname on input line 64.
-Package scrbase Info: activating english \chaptername on input line 64.
-Package scrbase Info: activating english \appendixname on input line 64.
-Package scrbase Info: activating english \figurename on input line 64.
-Package scrbase Info: activating english \tablename on input line 64.
-Package scrbase Info: activating english \contentsname on input line 64.
-Package scrbase Info: activating english \listfigurename on input line 64.
-Package scrbase Info: activating english \listtablename on input line 64.
-Package scrbase Info: activating english \bibname on input line 64.
-Package scrbase Info: activating english \indexname on input line 64.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 63.
+LaTeX Font Info:    ... okay on input line 63.
+Package scrbase Info: activating english \partname on input line 63.
+Package scrbase Info: activating english \chaptername on input line 63.
+Package scrbase Info: activating english \appendixname on input line 63.
+Package scrbase Info: activating english \figurename on input line 63.
+Package scrbase Info: activating english \tablename on input line 63.
+Package scrbase Info: activating english \contentsname on input line 63.
+Package scrbase Info: activating english \listfigurename on input line 63.
+Package scrbase Info: activating english \listtablename on input line 63.
+Package scrbase Info: activating english \bibname on input line 63.
+Package scrbase Info: activating english \indexname on input line 63.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1279,12 +1279,12 @@ Package scrbase Info: activating english \indexname on input line 64.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Info: Redefining \microtypecontext on input line 64.
-Package microtype Info: Applying patch `toc' on input line 64.
-Package microtype Info: Applying patch `eqnum' on input line 64.
-Package microtype Info: Applying patch `footnote' on input line 64.
-Package microtype Info: Applying patch `verbatim' on input line 64.
-LaTeX Info: Redefining \microtypesetup on input line 64.
+LaTeX Info: Redefining \microtypecontext on input line 63.
+Package microtype Info: Applying patch `toc' on input line 63.
+Package microtype Info: Applying patch `eqnum' on input line 63.
+Package microtype Info: Applying patch `footnote' on input line 63.
+Package microtype Info: Applying patch `verbatim' on input line 63.
+LaTeX Info: Redefining \microtypesetup on input line 63.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using default protrusion set `alltext'.
@@ -1316,9 +1316,9 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 48
  (/usr/share/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-Package hyperref Info: Link coloring OFF on input line 64.
+Package hyperref Info: Link coloring OFF on input line 63.
 \c@lstlisting=\count520
-Package tocbasic Info: setting babel extension for `lol' on input line 64.
+Package tocbasic Info: setting babel extension for `lol' on input line 63.
 \scr@dte@lstlisting@maxnumwidth=\skip113
 Package biblatex Info: Trying to load language 'english'...
 Package biblatex Info: ... file 'english.lbx' found.
@@ -1347,49 +1347,49 @@ Package biblatex Info: Automatic encoding selection.
 Package biblatex Info: Trying to load bibliographic data...
 Package biblatex Info: ... file 'main.bbl' found.
  (./main.bbl)
-Package biblatex Info: Reference section=0 on input line 64.
-Package biblatex Info: Reference segment=0 on input line 64.
+Package biblatex Info: Reference section=0 on input line 63.
+Package biblatex Info: Reference segment=0 on input line 63.
 <pictures/Logo_HTW_Berlin.pdf, id=7, 142.94847pt x 75.21736pt>
 File: pictures/Logo_HTW_Berlin.pdf Graphic file (type pdf)
 <use pictures/Logo_HTW_Berlin.pdf>
-Package pdftex.def Info: pictures/Logo_HTW_Berlin.pdf  used on input line 67.
+Package pdftex.def Info: pictures/Logo_HTW_Berlin.pdf  used on input line 66.
 (pdftex.def)             Requested size: 154.35889pt x 81.22664pt.
-LaTeX Font Info:    Calculating math sizes for size <11.5> on input line 67.
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 67.
+LaTeX Font Info:    Calculating math sizes for size <11.5> on input line 66.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 66.
  (/usr/share/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 67.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 66.
  (/usr/share/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 67.
+LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 66.
  (/usr/share/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 67.
+LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 66.
  (/usr/share/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <11.5> on input line 67.
+(Font)              <11.5> on input line 66.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8.04996> on input line 67.
+(Font)              <8.04996> on input line 66.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5.75> on input line 67.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 67.
+(Font)              <5.75> on input line 66.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 66.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 67.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 66.
  (/usr/share/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/usr/share/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
@@ -1399,7 +1399,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 67--68
 
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+lmss on input line 72.
+LaTeX Font Info:    Trying to load font information for T1+lmss on input line 71.
  (/usr/share/texmf-dist/tex/latex/lm/t1lmss.fd
 File: t1lmss.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -1407,7 +1407,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmss' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-Package tocbasic Info: character protrusion at toc deactivated on input line 72.
+Package tocbasic Info: character protrusion at toc deactivated on input line 71.
  (./main.toc [1
 
 
@@ -1464,7 +1464,7 @@ Overfull \hbox (7.50436pt too wide) in paragraph at lines 55--75
 
 [30]) (./chapters/implementation/prep.tex [31]) (./chapters/implementation/dataset.tex [32]
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 16.
- [33]
+ [33] [34]
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 106.
  (/usr/share/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1515,7 +1515,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--134
 \T1/lmtt/m/n/10.49382 marketed as environmentally sustainable or of sustainability-linked bonds
  []
 
-[34]) (./chapters/implementation/bi_encoder.tex
+) (./chapters/implementation/bi_encoder.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [35] [36] (./chapters/implementation/hard_negative_mining.tex [37])) (./chapters/implementation/augmentation.tex [38]
@@ -1600,14 +1600,11 @@ chapter 5.
 
 
 
-] [46]) (./chapters/evaluation/performance.tex [47]) (./chapters/evaluation/comparative_performace.tex [48] [49]) (./chapters/evaluation/error_analysis.tex [50] [51]) (./chapters/evaluation/discussion.tex [52] [53])) [54]) (./chapters/99_Anhang.tex) (./references/acronyms.tex)
+] [46]) (./chapters/evaluation/performance.tex [47]) (./chapters/evaluation/comparative_performace.tex [48] [49]) (./chapters/evaluation/error_analysis.tex [50] [51]) (./chapters/evaluation/discussion.tex [52] [53])) [54]) (./chapters/99_Anhang.tex
+chapter without number
+) (./references/acronyms.tex)
 No file main.nls.
-Package tocbasic Info: character protrusion at lof deactivated on input line 105.
-(./main.lof)
-\tf@lof=\write8
-\openout8 = `main.lof'.
-
- [55
+[55
 
 
 
@@ -1618,21 +1615,30 @@ Package tocbasic Info: character protrusion at lof deactivated on input line 105
 
 
 ]
-Package tocbasic Info: character protrusion at lot deactivated on input line 108.
- (./main.lot)
-\tf@lot=\write9
-\openout9 = `main.lot'.
+Package tocbasic Info: character protrusion at lof deactivated on input line 104.
+ (./main.lof)
+\tf@lof=\write8
+\openout8 = `main.lof'.
 
  [57] [58
 
 
 ]
-Package tocbasic Info: character protrusion at lol deactivated on input line 111.
+Package tocbasic Info: character protrusion at lot deactivated on input line 107.
+ (./main.lot)
+\tf@lot=\write9
+\openout9 = `main.lot'.
+
+ [59] [60
+
+
+]
+Package tocbasic Info: character protrusion at lol deactivated on input line 110.
  (./main.lol)
 \tf@lol=\write10
 \openout10 = `main.lol'.
 
- [59] [60
+ [61] [62
 
 
 ]
@@ -1643,20 +1649,25 @@ chapter without number
 Package microtype Info: Character `029' is missing
 (microtype)             in font `T1/lmr/m/sc/11.5'.
 (microtype)             Ignoring protrusion settings for this character.
-[61
+[63
 
 
-] (./Eigenstaendigkeitserklaerung.tex [62]
+] (./ki_einsatzerklaerung.tex [64]
 chapter without number
-) (./ki_einsatzerklaerung.tex [63
+) (./Eigenstaendigkeitserklaerung.tex [65
 
 
-] [64
+] [66
 
 
 ]
 chapter without number
-) [65] (./main.aux (./chapters/evaluation/evaluation.aux))
+) (./Sperr.tex [67] [68
+
+
+]
+chapter without number
+) [69] (./main.aux (./chapters/evaluation/evaluation.aux))
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2020/03/25>
@@ -1666,18 +1677,18 @@ Package logreq Info: Writing requests to 'main.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 45723 strings out of 469462
- 916076 string characters out of 5468615
- 1951385 words of memory out of 5000000
- 73135 multiletter control sequences out of 15000+600000
+ 45737 strings out of 469462
+ 916217 string characters out of 5468615
+ 1951387 words of memory out of 5000000
+ 73140 multiletter control sequences out of 15000+600000
  726137 words of font info for 190 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
  115i,20n,110p,11316b,2519s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmcsc10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmex10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmi8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmmib10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmro12.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmsy8.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtk10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/share/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on main.pdf (71 pages, 501309 bytes).
+Output written on main.pdf (75 pages, 505764 bytes).
 PDF statistics:
- 1092 PDF objects out of 1200 (max. 8388607)
- 969 compressed objects within 10 object streams
- 227 named destinations out of 1000 (max. 500000)
- 58594 words of extra memory for PDF output out of 61914 (max. 10000000)
+ 1123 PDF objects out of 1200 (max. 8388607)
+ 996 compressed objects within 10 object streams
+ 233 named destinations out of 1000 (max. 500000)
+ 58610 words of extra memory for PDF output out of 61914 (max. 10000000)
 

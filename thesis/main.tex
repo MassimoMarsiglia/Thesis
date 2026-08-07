@@ -17,7 +17,6 @@
 %% Titel und Author 
 \titel{Evaluation of Modern Hopfield Networks as Associative Memory for Compliance Processes: A Comparative Study with Alternative Retrieval Architectures}
 \autor{Massimo Diego Marsiglia}
-\matrikelnr{s0589958}
 %% Version und Abgabedatum
 \version{0.2$\alpha$} 	%ToDo: wird derzeit noch nicht genutzt
 \datum{07.08.2026}   	% Abgabedatum der Arbeit
@@ -64,7 +63,7 @@ pdfproducer = {pdflatex}
 \begin{document}
 
 %% Deckblatt erzeugen
-\maketitle
+e\maketitle
 
 %% Inhaltsverzeichnis erstellen
 \cleardoubleoddpage
@@ -125,10 +124,12 @@ pdfproducer = {pdflatex}
 %\printbibliography[heading=bibintoc, keyword={online}, title={Onlinequellen}]\clearpage
 %\printbibliography[heading=bibintoc, keyword={image}, title={Bildquellen}]\clearpage
 
+%% Erklärung zum Einsatz von KI-Tools
+\input{ki_einsatzerklaerung}
+
 %% Erklärung zur Eigenständigkeit
 \input{Eigenstaendigkeitserklaerung}
 
-%% Erklärung zum Einsatz von KI-Tools
-\input{ki_einsatzerklaerung}
+\input{Sperr.tex}
 
 \end{document}

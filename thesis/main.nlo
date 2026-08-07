@@ -1,10 +1,10 @@
-\nomenclatureentry{aEU@[{EU}]\begingroup Europäische Union\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{a6LoWPAN@[{6LoWPAN}]\begingroup IPv6 over Low power Wireless Personal Area Network\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aAC@[{AC}]\begingroup Alternating Current (Wechselstrom)\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aANSI@[{ANSI}]\begingroup American National Standards Institute\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aPDU@[{PDU}]\begingroup Protocol Data Unit\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aAPI@[{API}]\begingroup Application Programming Interface\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aAPS@[{APS}]\begingroup Application Support Sublayer (ZigBee)\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aASDU@[{ASDU}]\begingroup Application Service Data Unit\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aBAN@[{BAN}]\begingroup Body Area Network\nomeqref {.1}|nompageref}{55}
-\nomenclatureentry{aBSD@[{BSD}]\begingroup Berkeley Software Distribution\nomeqref {.1}|nompageref}{55}
+\nomenclatureentry{aEU@[{EU}]\begingroup Europäische Union\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{a6LoWPAN@[{6LoWPAN}]\begingroup IPv6 over Low power Wireless Personal Area Network\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aAC@[{AC}]\begingroup Alternating Current (Wechselstrom)\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aANSI@[{ANSI}]\begingroup American National Standards Institute\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aPDU@[{PDU}]\begingroup Protocol Data Unit\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aAPI@[{API}]\begingroup Application Programming Interface\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aAPS@[{APS}]\begingroup Application Support Sublayer (ZigBee)\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aASDU@[{ASDU}]\begingroup Application Service Data Unit\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aBAN@[{BAN}]\begingroup Body Area Network\nomeqref {.0}|nompageref}{55}
+\nomenclatureentry{aBSD@[{BSD}]\begingroup Berkeley Software Distribution\nomeqref {.0}|nompageref}{55}

@@ -1,6 +1,6 @@
 \subsection{Entity Linking Performance}
 
-The complete entity linking pipeline was evaluated on the held-out test dataset containing 725 regulatory reference instances. The evaluation measures whether the system can correctly resolve a regulatory reference to its corresponding regulatory entity after candidate retrieval and reranking.
+The complete entity linking pipeline was evaluated on the held-out test dataset containing 725 regulatory reference instances. The evaluation measures whether the system can correctly resolve a regulatory reference to its corresponding regulatory document entity after candidate retrieval and reranking.
 
 \begin{table}[H]
 \centering
@@ -18,10 +18,10 @@ NDCG@50 & 0.8826 \\
 \end{tabular}
 \end{table}
 
-The proposed entity linking system achieved a Recall@50 of 90.76\%, indicating that the correct regulatory entity was contained within the generated candidate set for the majority of test references. This demonstrates that the system is able to identify relevant regulatory entities despite variations in reference formulations, including abbreviated titles, alternative naming conventions, and incomplete identifiers.
+The proposed entity linking system achieved a Recall@50 of 90.76\%, indicating that the correct regulatory document entity was contained within the generated candidate set for the majority of test references. This demonstrates that the system is able to identify relevant regulatory entities despite variations in reference formulations, including abbreviated titles, alternative naming conventions, and incomplete identifiers.
 
-The final top-ranked entity prediction achieved an Accuracy@1 of 85.38\%. This indicates that in the majority of cases, the system selected the correct regulatory entity as its highest-ranked prediction. The difference between candidate recall and top-ranked accuracy reflects challenging cases where multiple regulatory entities exhibit similar terminology or where references contain insufficient information to uniquely identify the intended entity.
+The final top-ranked entity prediction achieved an Accuracy@1 of 85.38\%. This indicates that in the majority of cases, the system selected the correct regulatory document entity as its highest-ranked prediction. The difference between candidate recall and top-ranked accuracy reflects challenging cases where multiple regulatory entities exhibit similar terminology or where references contain insufficient information to uniquely identify the intended entity.
 
-The ranking-based metrics further demonstrate the quality of the generated candidate ordering. The system achieved an MRR@50 of 87.45\% and an NDCG@50 of 88.26\%, indicating that the correct regulatory entity was generally positioned near the top of the ranked candidate list. These results suggest that even when the highest-ranked prediction was incorrect, the system frequently produced highly relevant alternatives close to the correct solution.
+The ranking-based metrics further demonstrate the quality of the generated candidate ordering. The system achieved an MRR@50 of 87.45\% and an NDCG@50 of 88.26\%, indicating that the correct regulatory document entity was generally positioned near the top of the ranked candidate list. These results suggest that even when the highest-ranked prediction was incorrect, the system frequently produced highly relevant alternatives close to the correct solution.
 
 Overall, the results demonstrate that the proposed two-stage retrieval architecture provides robust entity linking performance for regulatory references. The system successfully resolves the majority of references while maintaining robustness against variations in regulatory terminology and reference structure.
